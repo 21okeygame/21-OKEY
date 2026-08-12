@@ -1,0 +1,10 @@
+{
+  "name": "21 Okey",
+  "short_name": "21 Okey",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#063c27",
+  "theme_color": "#0d5c3a",
+  "description": "21 Okey oynanabilir test sürümü"
+}
