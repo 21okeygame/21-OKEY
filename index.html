@@ -1,496 +1,1109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="21 Okey">
-
-<title>21 Okey Premium</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 OKEY — Modern Oyun Salonu</title>
 
 <style>
-:root{
- --gold:#e7bd45;
- --gold2:#fff0a0;
- --black:#050505;
- --black2:#111;
- --felt:#080808;
- --felt2:#171717;
- --red:#e53935;
- --blue:#2196f3;
- --green:#25a55a;
- --white:#f7f4e9;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
-*{box-sizing:border-box}
+:root{
+    --bg:#080909;
+    --panel:#111313;
+    --panel2:#171a1a;
+    --gold:#d7aa52;
+    --gold2:#f1ce7a;
+    --green:#0d5b43;
+    --green2:#147c5a;
+    --red:#e43c45;
+    --blue:#3e8cff;
+    --white:#f4f4f4;
+    --muted:#909898;
+    --tile:#101111;
+    --tile-border:#303535;
+    --shadow:0 15px 50px rgba(0,0,0,.65);
+}
 
 html,body{
- margin:0;
- min-height:100%;
- background:#020202;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
- color:white;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% 45%,#18201d 0%,#090a0a 48%,#030303 100%);
+    color:white;
 }
 
-body{
- background:
- radial-gradient(circle at 50% 30%,#292929 0,#0c0c0c 45%,#000 100%);
-}
+/* =========================
+   APP
+========================= */
 
 .app{
- width:100%;
- max-width:1200px;
- margin:auto;
- padding:10px 10px 35px;
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
 }
 
-.top{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:10px;
- padding:10px 14px;
- border:1px solid #b98b24;
- border-radius:15px;
- background:linear-gradient(145deg,#181818,#050505);
- box-shadow:0 7px 25px #000;
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    height:70px;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+    background:linear-gradient(180deg,rgba(4,5,5,.96),rgba(4,5,5,.70));
+    border-bottom:1px solid rgba(255,255,255,.06);
+    backdrop-filter:blur(15px);
 }
 
 .logo{
- font-size:23px;
- font-weight:900;
- color:var(--gold);
- letter-spacing:.5px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
-.sub{
- font-size:11px;
- color:#aaa;
+.logoMark{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:21px;
+    background:linear-gradient(145deg,#171918,#080909);
+    border:1px solid rgba(215,170,82,.55);
+    box-shadow:0 0 20px rgba(215,170,82,.12);
 }
 
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:6px;
- margin:8px 0;
+.logoText{
+    color:var(--gold2);
 }
 
-.stat{
- text-align:center;
- padding:7px;
- border:1px solid #4b3a17;
- border-radius:10px;
- background:#0b0b0b;
- font-size:11px;
+.topActions{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.stat b{
- display:block;
- color:var(--gold);
- font-size:17px;
- margin-top:2px;
+.iconBtn{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#121515;
+    color:#ddd;
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
 }
 
-/* MASA */
+.iconBtn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(215,170,82,.5);
+    color:var(--gold2);
+}
+
+.profileMini{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:5px 10px 5px 5px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+    background:#111313;
+    cursor:pointer;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 50% 30%,#d7b78a 0 13%,transparent 14%),
+        radial-gradient(circle at 50% 45%,#252525 0 25%,transparent 26%),
+        linear-gradient(145deg,#26332f,#0c1110);
+    border:2px solid rgba(215,170,82,.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.profileMini strong{
+    display:block;
+    font-size:13px;
+}
+
+.profileMini small{
+    color:var(--gold2);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    width:100%;
+    height:100%;
+    padding-top:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+/* ambient lights */
+
+.light{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    pointer-events:none;
+    opacity:.16;
+}
+
+.light1{
+    width:280px;
+    height:280px;
+    background:#d7aa52;
+    top:10%;
+    left:15%;
+}
+
+.light2{
+    width:350px;
+    height:350px;
+    background:#0e805c;
+    bottom:5%;
+    right:12%;
+}
+
+/* =========================
+   TABLE
+========================= */
 
 .table{
- position:relative;
- padding:13px;
- border-radius:30px;
- border:3px solid #bd922e;
- background:
- radial-gradient(circle at 50% 50%,#202020,#0a0a0a 65%,#020202);
- box-shadow:
- inset 0 0 50px #000,
- 0 15px 45px #000;
- min-height:650px;
+    width:min(1150px,92vw);
+    height:min(690px,78vh);
+    position:relative;
+    border-radius:42% / 34%;
+    background:
+        radial-gradient(ellipse at center,#11664c 0%,#0b513e 48%,#07382d 100%);
+    border:25px solid #1c1711;
+    box-shadow:
+        inset 0 0 80px rgba(0,0,0,.65),
+        inset 0 0 0 2px rgba(215,170,82,.25),
+        0 25px 80px rgba(0,0,0,.75);
 }
 
-.tableTitle{
- text-align:center;
- font-size:25px;
- font-weight:900;
- letter-spacing:5px;
- color:#d8ad3c;
- text-shadow:0 2px 10px #000;
- margin:4px 0 8px;
+.table:before{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border-radius:inherit;
+    border:1px solid rgba(215,170,82,.18);
+    pointer-events:none;
 }
 
-/* OYUNCULAR */
-
-.seats{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
+.tableLogo{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    opacity:.12;
+    pointer-events:none;
 }
 
-.seat{
- padding:8px 10px;
- border-radius:12px;
- border:1px solid #4b3a17;
- background:linear-gradient(145deg,#151515,#050505);
- box-shadow:0 5px 14px #000;
- font-size:12px;
+.tableLogo b{
+    font-size:55px;
+    letter-spacing:8px;
 }
 
-.seat.active{
- border-color:var(--gold);
- box-shadow:0 0 15px #d7ad3c55;
+.tableLogo span{
+    display:block;
+    letter-spacing:5px;
 }
 
-.seat b{
- color:var(--gold);
+/* =========================
+   PLAYER AREAS
+========================= */
+
+.player{
+    position:absolute;
+    z-index:20;
+    min-width:170px;
+    padding:9px 13px;
+    border-radius:17px;
+    background:rgba(9,11,10,.85);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* MERKEZ */
+.player.active{
+    border-color:rgba(215,170,82,.75);
+    box-shadow:
+        0 0 0 1px rgba(215,170,82,.12),
+        0 0 25px rgba(215,170,82,.16);
+}
 
-.center{
- min-height:250px;
- display:grid;
- grid-template-columns:1fr 1fr 1fr;
- align-items:center;
- text-align:center;
- gap:15px;
+.playerTop{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.playerAvatar{
+    width:39px;
+    height:39px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#26332e,#0b100e);
+    border:1px solid rgba(255,255,255,.18);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:900;
+    color:var(--gold2);
+}
+
+.playerInfo strong{
+    display:block;
+    font-size:13px;
+}
+
+.playerInfo span{
+    font-size:11px;
+    color:#8d9794;
+}
+
+.playerStats{
+    display:flex;
+    gap:12px;
+    margin-top:6px;
+    font-size:10px;
+    color:#a7afac;
+}
+
+.playerStats b{
+    color:#fff;
+}
+
+.playerStatus{
+    position:absolute;
+    right:8px;
+    top:-9px;
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:9px;
+    font-weight:bold;
+    background:#191d1b;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.player.active .playerStatus{
+    background:#705321;
+    color:#fff2c9;
+}
+
+.p1{
+    top:22px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.p2{
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.p3{
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.p4{
+    bottom:17px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* =========================
+   CENTER
+========================= */
+
+.centerArea{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:360px;
+    min-height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+}
+
+.deckArea,
+.discardArea{
+    text-align:center;
 }
 
 .areaTitle{
- color:#aaa;
- font-size:11px;
- margin-bottom:7px;
+    color:#9aa29f;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:8px;
 }
-
-.dropArea{
- min-height:100px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:18px;
- border:1px dashed #6d5724;
- background:#05050599;
-}
-
-.dropArea.over{
- border-color:var(--gold);
- box-shadow:0 0 20px #d9b44255;
-}
-
-/* DESTEK / ATILAN */
 
 .deck{
- cursor:pointer;
- width:58px;
- height:78px;
- border-radius:9px;
- border:2px solid #c39b38;
- background:
- linear-gradient(135deg,#222,#050505);
- box-shadow:
- 0 5px 12px #000,
- inset 0 0 0 3px #111,
- inset 0 0 0 5px #9c7929;
- color:var(--gold);
- font-size:27px;
- font-weight:900;
+    width:66px;
+    height:92px;
+    border-radius:8px;
+    position:relative;
+    background:
+        repeating-linear-gradient(45deg,#183e33 0 3px,#0e2922 3px 6px);
+    border:2px solid #b99148;
+    box-shadow:
+        7px 7px 0 #080d0b,
+        0 12px 25px rgba(0,0,0,.5);
+    cursor:pointer;
+    transition:.2s;
 }
 
-.deck:active{
- transform:scale(.94);
+.deck:hover{
+    transform:translateY(-5px);
 }
 
-.turn{
- color:var(--gold);
- font-weight:900;
- font-size:18px;
+.deck:after{
+    content:"21";
+    position:absolute;
+    inset:9px;
+    border:1px solid rgba(215,170,82,.55);
+    border-radius:4px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#e6c778;
+    font-weight:900;
 }
 
-/* TAŞ */
+.discard{
+    width:62px;
+    height:88px;
+}
+
+/* =========================
+   TILES
+========================= */
+
+.hand{
+    position:absolute;
+    z-index:30;
+    left:50%;
+    bottom:16px;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:5px;
+    width:min(95%,1000px);
+    min-height:125px;
+    padding:10px 12px 5px;
+    border-radius:25px;
+    background:linear-gradient(180deg,rgba(5,7,7,.2),rgba(5,7,7,.75));
+}
 
 .tile{
- position:relative;
- width:44px;
- height:57px;
- flex:0 0 auto;
- border-radius:7px;
- border:1px solid #777;
- background:
- linear-gradient(145deg,#252525,#070707);
- box-shadow:
- 0 4px 7px #000,
- inset 0 1px 1px #555;
- color:white;
- cursor:grab;
- user-select:none;
- touch-action:none;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:flex-start;
- padding-top:4px;
+    width:52px;
+    height:78px;
+    flex:0 0 52px;
+    border-radius:8px;
+    position:relative;
+    cursor:grab;
+    user-select:none;
+    touch-action:none;
+    background:
+        linear-gradient(145deg,#191c1b,#090a0a);
+    border:1px solid #3b4140;
+    box-shadow:
+        0 7px 10px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.07);
+    transition:
+        transform .16s,
+        box-shadow .16s,
+        border .16s;
 }
 
-.tile:active{
- cursor:grabbing;
-}
-
-.tile .num{
- font-size:27px;
- line-height:28px;
- font-weight:950;
-}
-
-.tile .sym{
- font-size:13px;
- line-height:15px;
- opacity:.95;
-}
-
-.tile.red .num,
-.tile.red .sym{color:#e53935}
-
-.tile.blue .num,
-.tile.blue .sym{color:#2196f3}
-
-.tile.green .num,
-.tile.green .sym{color:#29ad61}
-
-.tile.black .num,
-.tile.black .sym{color:#eee}
-
-.tile.joker .num{
- color:#f0c83d;
- font-size:21px;
+.tile:hover{
+    transform:translateY(-13px);
+    border-color:rgba(215,170,82,.65);
+    box-shadow:
+        0 18px 25px rgba(0,0,0,.5),
+        0 0 20px rgba(215,170,82,.1);
 }
 
 .tile.selected{
- transform:translateY(-6px);
- border-color:var(--gold);
- box-shadow:0 0 15px #e6bd4488;
+    transform:translateY(-20px);
+    border-color:var(--gold2);
+    box-shadow:
+        0 20px 30px rgba(0,0,0,.55),
+        0 0 22px rgba(215,170,82,.25);
 }
 
-.tile.dragging{
- opacity:.45;
+.tileNumber{
+    position:absolute;
+    left:0;
+    right:0;
+    top:7px;
+    text-align:center;
+    font-size:31px;
+    line-height:32px;
+    font-weight:950;
+    font-family:Arial,sans-serif;
 }
 
-/* ISTAKA */
-
-.handWrap{
- margin-top:8px;
- padding:10px;
- border-radius:18px;
- border:2px solid #b58a2c;
- background:
- linear-gradient(180deg,#171717,#050505);
- box-shadow:
- inset 0 0 25px #000,
- 0 10px 25px #000;
+.tileSymbol{
+    position:absolute;
+    left:0;
+    right:0;
+    top:42px;
+    text-align:center;
+    font-size:14px;
+    opacity:.95;
 }
 
-.handHeader{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:7px;
+.red .tileNumber,
+.red .tileSymbol{
+    color:#e7424c;
 }
 
-.handHeader b{
- color:var(--gold);
+.blue .tileNumber,
+.blue .tileSymbol{
+    color:#3d91ff;
 }
 
-.hand{
- position:relative;
- min-height:126px;
- padding:7px;
- border-radius:12px;
- border:1px solid #4d3b18;
- background:
- linear-gradient(180deg,#090909,#181818,#070707);
- display:flex;
- flex-wrap:wrap;
- align-content:center;
- justify-content:center;
- gap:3px;
+.yellow .tileNumber,
+.yellow .tileSymbol{
+    color:#e7bd4f;
 }
 
-.hand.over{
- border-color:var(--gold);
- box-shadow:inset 0 0 20px #b58a2c44;
+.black .tileNumber,
+.black .tileSymbol{
+    color:#f0f0f0;
 }
 
-/* AÇIK PERLER */
-
-.openArea{
- margin-top:9px;
- min-height:100px;
- padding:9px;
- border-radius:15px;
- border:1px dashed #755d28;
- background:#050505aa;
+.joker .tileNumber{
+    color:#d9b157;
 }
 
-.openTitle{
- font-size:11px;
- color:#aaa;
- margin-bottom:6px;
+.joker .tileSymbol{
+    color:#e5e5e5;
 }
 
-.melds{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
- justify-content:center;
+.tileSmall{
+    width:38px;
+    height:54px;
+    flex-basis:38px;
 }
 
-.meld{
- min-height:66px;
- padding:5px;
- border:1px solid #705921;
- border-radius:9px;
- background:#111;
- display:flex;
- gap:3px;
- align-items:center;
+.tileSmall .tileNumber{
+    font-size:20px;
+    top:4px;
+    line-height:22px;
 }
 
-.meld.over{
- border-color:var(--gold);
- box-shadow:0 0 15px #d9b44255;
+.tileSmall .tileSymbol{
+    top:28px;
+    font-size:10px;
 }
 
-/* MESAJ */
+/* =========================
+   SIDE PANEL
+========================= */
 
-.msg{
- margin-top:8px;
- min-height:42px;
- padding:10px;
- border-radius:12px;
- text-align:center;
- background:#090909;
- border:1px solid #332913;
- font-size:13px;
- color:#ddd;
+.sidePanel{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:45;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:8px;
+    border-radius:18px;
+    background:rgba(8,10,9,.88);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:var(--shadow);
 }
 
-/* PUAN */
-
-.score{
- margin-top:9px;
- padding:9px;
- border-radius:13px;
- border:1px solid #4c3a18;
- background:#080808;
+.modeBtn{
+    width:58px;
+    height:64px;
+    border:0;
+    border-radius:13px;
+    background:#151918;
+    color:#9ca39f;
+    cursor:pointer;
+    transition:.2s;
+    font-weight:bold;
+    font-size:11px;
 }
 
-.scoreline{
- display:grid;
- grid-template-columns:1.5fr 1fr 1fr;
- padding:5px;
- font-size:12px;
- border-bottom:1px solid #222;
+.modeBtn span{
+    display:block;
+    font-size:21px;
+    margin-bottom:4px;
 }
 
-.scoreline b{
- color:var(--gold);
+.modeBtn.active,
+.modeBtn:hover{
+    background:linear-gradient(145deg,#745a2b,#332817);
+    color:white;
+    box-shadow:0 0 15px rgba(215,170,82,.15);
 }
 
-/* KURALLAR */
+/* =========================
+   BOTTOM CONTROLS
+========================= */
 
-.rules{
- margin-top:9px;
- padding:10px;
- border-radius:13px;
- background:#080808;
- border:1px solid #332913;
- font-size:11px;
- line-height:1.5;
- color:#bbb;
+.controls{
+    position:absolute;
+    left:50%;
+    bottom:2px;
+    transform:translateX(-50%);
+    z-index:60;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-/* MOBİL */
+.controlBtn{
+    height:39px;
+    padding:0 15px;
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(12,15,14,.94);
+    color:#d4d8d6;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.controlBtn:hover{
+    border-color:rgba(215,170,82,.6);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+.controlBtn.primary{
+    background:linear-gradient(145deg,#9a7330,#60481d);
+    border-color:#c59b4e;
+    color:white;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer{
+    position:absolute;
+    top:105px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:35;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:conic-gradient(var(--gold2) 0deg,#202421 0deg);
+    box-shadow:0 0 30px rgba(215,170,82,.12);
+}
+
+.timer:before{
+    content:"";
+    position:absolute;
+    width:63px;
+    height:63px;
+    border-radius:50%;
+    background:#0b0e0d;
+}
+
+.timer span{
+    position:relative;
+    z-index:2;
+    font-size:21px;
+    font-weight:900;
+}
+
+/* =========================
+   PROFILE MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(12px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modalBox{
+    width:min(650px,95vw);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:25px;
+    background:
+        linear-gradient(145deg,#171a19,#0b0d0c);
+    border:1px solid rgba(215,170,82,.25);
+    box-shadow:0 30px 100px rgba(0,0,0,.8);
+    padding:25px;
+}
+
+.modalHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:10px;
+    background:#1b201e;
+    color:white;
+    cursor:pointer;
+}
+
+.profileHero{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:18px;
+    border-radius:18px;
+    background:#101312;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.bigAvatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#354d44,#0c1110);
+    border:2px solid var(--gold);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:900;
+    color:var(--gold2);
+}
+
+.level{
+    margin-top:6px;
+    color:var(--gold2);
+    font-size:13px;
+}
+
+.xpBar{
+    height:7px;
+    width:230px;
+    background:#272c2a;
+    border-radius:20px;
+    margin-top:10px;
+    overflow:hidden;
+}
+
+.xp{
+    height:100%;
+    width:72%;
+    background:linear-gradient(90deg,#a47a31,#f2ce78);
+}
+
+.statsGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.stat{
+    padding:16px;
+    border-radius:15px;
+    background:#101312;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.stat span{
+    display:block;
+    color:#818986;
+    font-size:11px;
+}
+
+.stat strong{
+    display:block;
+    font-size:22px;
+    margin-top:5px;
+}
+
+.achievements{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.badge{
+    padding:10px 13px;
+    border-radius:12px;
+    background:#181c1a;
+    border:1px solid rgba(215,170,82,.22);
+    font-size:11px;
+}
+
+/* =========================
+   START SCREEN
+========================= */
+
+.startScreen{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at center,#17241f 0%,#070908 55%,#020202 100%);
+}
+
+.startCard{
+    width:min(550px,90vw);
+    padding:45px 35px;
+    text-align:center;
+    border-radius:30px;
+    background:rgba(12,15,14,.9);
+    border:1px solid rgba(215,170,82,.25);
+    box-shadow:0 30px 100px rgba(0,0,0,.8);
+}
+
+.startLogo{
+    width:95px;
+    height:95px;
+    margin:0 auto 20px;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    font-weight:950;
+    color:var(--gold2);
+    background:linear-gradient(145deg,#211d14,#0b0c0b);
+    border:1px solid var(--gold);
+    box-shadow:0 0 45px rgba(215,170,82,.15);
+}
+
+.startCard h1{
+    font-size:42px;
+    letter-spacing:7px;
+}
+
+.startCard p{
+    color:#8c9591;
+    margin:10px 0 25px;
+}
+
+.startButtons{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.startBtn{
+    min-width:160px;
+    height:50px;
+    border-radius:14px;
+    border:1px solid rgba(215,170,82,.3);
+    background:#151918;
+    color:#ddd;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.startBtn.main{
+    background:linear-gradient(145deg,#a47a31,#62491f);
+    color:white;
+}
+
+.startBtn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,30px);
+    opacity:0;
+    z-index:300;
+    padding:12px 20px;
+    border-radius:12px;
+    background:#151918;
+    border:1px solid rgba(215,170,82,.4);
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+    transition:.3s;
+    font-size:12px;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* =========================
+   SCORE DISPLAY
+========================= */
+
+.scoreBoard{
+    position:absolute;
+    left:50%;
+    top:15px;
+    transform:translateX(-50%);
+    z-index:36;
+    display:flex;
+    gap:8px;
+}
+
+.scorePill{
+    padding:6px 10px;
+    border-radius:9px;
+    background:rgba(5,7,6,.7);
+    border:1px solid rgba(255,255,255,.06);
+    font-size:10px;
+}
+
+.scorePill b{
+    color:var(--gold2);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .table{
+        width:96vw;
+        height:74vh;
+        border-width:15px;
+    }
+
+    .sidePanel{
+        right:5px;
+    }
+
+    .modeBtn{
+        width:50px;
+        height:56px;
+    }
+
+    .tile{
+        width:43px;
+        height:66px;
+        flex-basis:43px;
+    }
+
+    .tileNumber{
+        font-size:26px;
+        line-height:27px;
+    }
+
+    .tileSymbol{
+        top:36px;
+        font-size:12px;
+    }
+
+    .hand{
+        gap:3px;
+    }
+
+    .player{
+        min-width:130px;
+        padding:7px;
+    }
+
+    .playerStats{
+        display:none;
+    }
+
+    .centerArea{
+        transform:translate(-50%,-50%) scale(.8);
+    }
+}
 
 @media(max-width:650px){
 
- .app{
-  padding:5px 5px 25px;
- }
+    .topbar{
+        height:58px;
+        padding:0 10px;
+    }
 
- .table{
-  padding:8px;
-  min-height:600px;
-  border-radius:22px;
- }
+    .logoText{
+        font-size:13px;
+    }
 
- .tableTitle{
-  font-size:19px;
-  letter-spacing:3px;
- }
+    .logoMark{
+        width:35px;
+        height:35px;
+    }
 
- .center{
-  min-height:190px;
-  gap:6px;
- }
+    .profileMini{
+        display:none;
+    }
 
- .tile{
-  width:35px;
-  height:48px;
-  padding-top:2px;
-  border-radius:5px;
- }
+    .main{
+        padding-top:58px;
+    }
 
- .tile .num{
-  font-size:22px;
-  line-height:23px;
- }
+    .table{
+        width:100vw;
+        height:78vh;
+        border-radius:40% / 28%;
+        border-width:10px;
+    }
 
- .tile .sym{
-  font-size:10px;
-  line-height:11px;
- }
+    .p1{
+        top:12px;
+    }
 
- .hand{
-  min-height:108px;
-  gap:2px;
-  padding:5px;
- }
+    .p2{
+        left:3px;
+    }
 
- .handWrap{
-  padding:7px;
- }
+    .p3{
+        right:3px;
+    }
 
- .stat{
-  padding:5px 2px;
- }
+    .p4{
+        bottom:72px;
+    }
 
- .stat b{
-  font-size:15px;
- }
+    .player{
+        min-width:105px;
+        max-width:120px;
+    }
 
- .deck{
-  width:48px;
-  height:67px;
-  font-size:22px;
- }
-}
+    .playerInfo strong{
+        font-size:10px;
+    }
 
-@media(max-width:390px){
+    .playerAvatar{
+        width:30px;
+        height:30px;
+    }
 
- .tile{
-  width:31px;
-  height:44px;
- }
+    .centerArea{
+        transform:translate(-50%,-50%) scale(.65);
+    }
 
- .tile .num{
-  font-size:19px;
-  line-height:20px;
- }
+    .timer{
+        top:80px;
+        transform:translateX(-50%) scale(.7);
+    }
 
- .tile .sym{
-  font-size:9px;
- }
+    .scoreBoard{
+        top:5px;
+    }
 
- .hand{
-  min-height:96px;
- }
+    .hand{
+        bottom:42px;
+        width:100%;
+        overflow-x:auto;
+        justify-content:flex-start;
+        padding-left:12px;
+        padding-right:12px;
+        scrollbar-width:none;
+    }
+
+    .hand::-webkit-scrollbar{
+        display:none;
+    }
+
+    .tile{
+        width:39px;
+        height:60px;
+        flex-basis:39px;
+    }
+
+    .tileNumber{
+        font-size:23px;
+        top:5px;
+    }
+
+    .tileSymbol{
+        top:32px;
+        font-size:11px;
+    }
+
+    .sidePanel{
+        top:58%;
+        transform:translateY(-50%) scale(.8);
+        transform-origin:right center;
+    }
+
+    .controls{
+        bottom:4px;
+        width:100%;
+        justify-content:center;
+    }
+
+    .controlBtn{
+        padding:0 9px;
+        font-size:9px;
+    }
+
+    .statsGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 </style>
 </head>
@@ -499,1206 +1112,1074 @@ body{
 
 <div class="app">
 
- <div class="top">
-  <div>
-   <div class="logo">♛ 21 OKEY</div>
-   <div class="sub">Premium Manuel Oyun • 1 İnsan + 3 Bot</div>
-  </div>
-  <div class="turn" id="turnLabel">SEN</div>
- </div>
+<!-- START SCREEN -->
+<div class="startScreen" id="startScreen">
 
- <div class="stats">
-  <div class="stat">EL <b id="round">1 / 11</b></div>
-  <div class="stat">SÜRE <b id="timer">25</b></div>
-  <div class="stat">SERİ <b id="serial">21+</b></div>
-  <div class="stat">ÇİFT <b id="pairs">5+</b></div>
- </div>
+    <div class="startCard">
 
- <div class="table">
+        <div class="startLogo">21</div>
 
-  <div class="tableTitle">21 OKEY</div>
+        <h1>21 OKEY</h1>
 
-  <div class="seats">
-   <div class="seat" id="p2">
-    Oyuncu 2<br>
-    <b>Bot</b> • Skor: <b>0</b>
-   </div>
+        <p>
+            Modern oyun salonu deneyimine hoş geldin.
+            Taşlarını kendin yönet, serini veya çiftini oluştur.
+        </p>
 
-   <div class="seat" id="p3">
-    Oyuncu 3<br>
-    <b>Bot</b> • Skor: <b>0</b>
-   </div>
-  </div>
+        <div class="startButtons">
 
-  <div class="center">
+            <button class="startBtn main" onclick="startGame()">
+                🎮 OYUNA BAŞLA
+            </button>
 
-   <!-- DESTE -->
-   <div>
-    <div class="areaTitle">DESTE</div>
-    <div class="dropArea">
-     <button class="deck"
-       id="deck"
-       onclick="drawDeck()">21</button>
+            <button class="startBtn" onclick="openProfile()">
+                👤 PROFİLİM
+            </button>
+
+        </div>
+
     </div>
-   </div>
-
-   <!-- ATILAN -->
-   <div>
-    <div class="areaTitle">ATILAN TAŞ</div>
-    <div class="dropArea"
-         id="discardArea"
-         onclick="takeDiscard()">
-     <span id="discard">—</span>
-    </div>
-   </div>
-
-   <!-- SIRA -->
-   <div>
-    <div class="areaTitle">SIRA</div>
-    <div class="turn" id="turnText">Sen</div>
-    <div class="sub" style="margin-top:8px">
-     Taşları kendin kullan
-    </div>
-   </div>
-
-  </div>
-
-  <div class="seat" id="p4">
-   Oyuncu 4<br>
-   <b>Bot</b> • Skor: <b>0</b>
-  </div>
-
-  <!-- AÇIK PERLER -->
-
-  <div class="openArea"
-       id="openArea"
-       ondragover="allowDrop(event)"
-       ondrop="dropToOpen(event)">
-
-   <div class="openTitle">
-    AÇIK PERLER — Taşını buraya sürükle
-   </div>
-
-   <div class="melds" id="melds"></div>
-
-  </div>
-
-  <!-- ISTAKA -->
-
-  <div class="handWrap">
-
-   <div class="handHeader">
-    <b>PREMİUM ISTAKA</b>
-    <span id="count">15 taş</span>
-   </div>
-
-   <div class="hand"
-        id="hand"
-        ondragover="allowDrop(event)"
-        ondrop="dropToHand(event)">
-   </div>
-
-  </div>
-
-  <div class="msg" id="msg">
-   15 taşla başladın. İlk turda desteden taş çekmeden oynayabilirsin.
-   Taşları kendin sürükleyip yerleştir.
-  </div>
-
- </div>
-
- <div class="score" id="score"></div>
-
- <div class="rules">
-  <b style="color:#e7bd45">MANUEL OYUN SİSTEMİ</b><br>
-  Deste ve atılan taş dışında işlem butonu yoktur.
-  Taşları kendin sürükleyerek ıstakana yerleştirirsin.
-  Perlerini kendin oluşturursun.
-  Açık per alanına sürüklenen taşlar kontrol edilir.
-  Taşı atılan bölgeye sürükleyerek atarsın.
-  Seri açılışı 21+, çift açılışı minimum 5 çift ve katlamalıdır.
-  12-13-1 serisi geçerlidir.
-  İşlek taş atma cezası +100'dür.
-  El bitiren -100 alır.
-  11 el sonunda en düşük toplam puan kazanır.
- </div>
 
 </div>
 
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <div class="logo">
+
+        <div class="logoMark">21</div>
+
+        <div class="logoText">
+            21 OKEY
+        </div>
+
+    </div>
+
+
+    <div class="topActions">
+
+        <button class="iconBtn" onclick="showToast('Ses ayarları yakında hazır.')">
+            🔊
+        </button>
+
+        <button class="iconBtn" onclick="showToast('Ayarlar açılıyor.')">
+            ⚙️
+        </button>
+
+        <div class="profileMini" onclick="openProfile()">
+
+            <div class="avatar">FG</div>
+
+            <div>
+                <strong>Fırat</strong>
+                <small>Seviye 18</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="light light1"></div>
+    <div class="light light2"></div>
+
+
+    <div class="table">
+
+        <div class="tableLogo">
+            <b>21</b>
+            <span>OKEY</span>
+        </div>
+
+
+        <!-- SCORE -->
+
+        <div class="scoreBoard">
+
+            <div class="scorePill">
+                SEN <b id="myScore">0</b>
+            </div>
+
+            <div class="scorePill">
+                EL <b id="round">1</b>/11
+            </div>
+
+        </div>
+
+
+        <!-- TIMER -->
+
+        <div class="timer" id="timer">
+
+            <span id="timerText">25</span>
+
+        </div>
+
+
+        <!-- PLAYER 1 -->
+
+        <div class="player p1 active">
+
+            <div class="playerStatus">
+                SIRA SENDE
+            </div>
+
+            <div class="playerTop">
+
+                <div class="playerAvatar">
+                    AY
+                </div>
+
+                <div class="playerInfo">
+
+                    <strong>Ayşe</strong>
+
+                    <span>Seviye 21</span>
+
+                </div>
+
+            </div>
+
+            <div class="playerStats">
+
+                <span>🏆 <b>82</b></span>
+                <span>⭐ <b>4.8</b></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER 2 -->
+
+        <div class="player p2">
+
+            <div class="playerTop">
+
+                <div class="playerAvatar">
+                    MK
+                </div>
+
+                <div class="playerInfo">
+
+                    <strong>Mehmet</strong>
+
+                    <span>Seviye 17</span>
+
+                </div>
+
+            </div>
+
+            <div class="playerStats">
+
+                <span>🏆 <b>61</b></span>
+                <span>⭐ <b>4.5</b></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER 3 -->
+
+        <div class="player p3">
+
+            <div class="playerTop">
+
+                <div class="playerAvatar">
+                    ES
+                </div>
+
+                <div class="playerInfo">
+
+                    <strong>Emre</strong>
+
+                    <span>Seviye 24</span>
+
+                </div>
+
+            </div>
+
+            <div class="playerStats">
+
+                <span>🏆 <b>104</b></span>
+                <span>⭐ <b>4.9</b></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER 4 -->
+
+        <div class="player p4">
+
+            <div class="playerTop">
+
+                <div class="playerAvatar">
+                    ZK
+                </div>
+
+                <div class="playerInfo">
+
+                    <strong>Zeynep</strong>
+
+                    <span>Seviye 15</span>
+
+                </div>
+
+            </div>
+
+            <div class="playerStats">
+
+                <span>🏆 <b>43</b></span>
+                <span>⭐ <b>4.3</b></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CENTER -->
+
+        <div class="centerArea">
+
+            <div class="deckArea">
+
+                <div class="areaTitle">
+                    Deste
+                </div>
+
+                <div class="deck" onclick="drawTile()"></div>
+
+            </div>
+
+
+            <div class="discardArea">
+
+                <div class="areaTitle">
+                    Atılan
+                </div>
+
+                <div id="discard" class="tile tileSmall red">
+
+                    <div class="tileNumber">
+                        8
+                    </div>
+
+                    <div class="tileSymbol">
+                        ●
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MODE -->
+
+        <div class="sidePanel">
+
+            <button
+                class="modeBtn active"
+                id="seriesBtn"
+                onclick="selectMode('series')">
+
+                <span>〰</span>
+                Seri
+
+            </button>
+
+            <button
+                class="modeBtn"
+                id="pairBtn"
+                onclick="selectMode('pair')">
+
+                <span>◆</span>
+                Çift
+
+            </button>
+
+        </div>
+
+
+        <!-- PLAYER HAND -->
+
+        <div
+            class="hand"
+            id="hand"
+            ondragover="allowDrop(event)"
+            ondrop="dropTile(event)"
+        >
+
+            <!-- generated by JS -->
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="controls">
+
+            <button class="controlBtn"
+                    onclick="showToast('Taş seçmek için üzerine dokun.')">
+                ✋ SEÇ
+            </button>
+
+            <button class="controlBtn"
+                    onclick="showToast('Taşı istediğin yere sürükleyebilirsin.')">
+                ↔ DÜZENLE
+            </button>
+
+            <button class="controlBtn"
+                    onclick="takeDiscard()">
+                ⬅ ATILANI AL
+            </button>
+
+            <button class="controlBtn primary"
+                    onclick="discardSelected()">
+                TAŞ AT ➜
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PROFILE MODAL -->
+
+<div class="modal" id="profileModal">
+
+    <div class="modalBox">
+
+        <div class="modalHeader">
+
+            <h2>Oyuncu Profili</h2>
+
+            <button class="close" onclick="closeProfile()">✕</button>
+
+        </div>
+
+
+        <div class="profileHero">
+
+            <div class="bigAvatar">
+                FG
+            </div>
+
+            <div>
+
+                <h2>Fırat</h2>
+
+                <div class="level">
+                    Seviye 18 • 7.420 XP
+                </div>
+
+                <div class="xpBar">
+                    <div class="xp"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="statsGrid">
+
+            <div class="stat">
+                <span>Oynanan</span>
+                <strong>238</strong>
+            </div>
+
+            <div class="stat">
+                <span>Kazanılan</span>
+                <strong>147</strong>
+            </div>
+
+            <div class="stat">
+                <span>Kazanma</span>
+                <strong>%61</strong>
+            </div>
+
+            <div class="stat">
+                <span>En iyi skor</span>
+                <strong>184</strong>
+            </div>
+
+            <div class="stat">
+                <span>Seri</span>
+                <strong>76</strong>
+            </div>
+
+            <div class="stat">
+                <span>Çift</span>
+                <strong>41</strong>
+            </div>
+
+        </div>
+
+
+        <h3 style="margin-top:22px;">
+            Başarılar
+        </h3>
+
+        <div class="achievements">
+
+            <div class="badge">🏆 İlk Zafer</div>
+            <div class="badge">🔥 10 Galibiyet</div>
+            <div class="badge">⚡ Hızlı Oyuncu</div>
+            <div class="badge">👑 Salon Ustası</div>
+            <div class="badge">💎 100 Oyun</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    Hazır
+</div>
+
+</div>
+
+
 <script>
 
-const COLORS=[
- ['red','♥'],
- ['blue','♦'],
- ['black','♣'],
- ['green','♠']
+/* =========================================================
+   21 OKEY — GAME ENGINE
+========================================================= */
+
+const colors = [
+    {
+        name:"red",
+        symbol:"●"
+    },
+    {
+        name:"blue",
+        symbol:"◆"
+    },
+    {
+        name:"yellow",
+        symbol:"■"
+    },
+    {
+        name:"black",
+        symbol:"▲"
+    }
 ];
 
-let deck=[];
-let hand=[];
-let opened=[];
-let discard=null;
+let hand = [];
 
-let scores=[0,0,0,0];
+let selectedTile = null;
 
-let round=1;
-let turn=0;
-let firstTurn=true;
-let timer=25;
-let timerId=null;
-let roundOver=false;
+let selectedMode = "series";
 
-let serialLimit=21;
-let pairLimit=5;
+let timerValue = 25;
 
-let draggedIndex=null;
+let timerInterval = null;
 
-const $=id=>document.getElementById(id);
+let round = 1;
+
+let score = 0;
 
 
-/* ---------------- DESTE ---------------- */
+/* =========================================================
+   START
+========================================================= */
 
-function shuffle(a){
- for(let i=a.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [a[i],a[j]]=[a[j],a[i]];
- }
- return a;
+function startGame(){
+
+    document.getElementById("startScreen").style.display="none";
+
+    createHand();
+
+    startTimer();
+
+    showToast("Oyun başladı. Taşlarını kendin yönet!");
+
 }
 
-function makeDeck(){
 
- deck=[];
+/* =========================================================
+   CREATE PLAYER HAND
+========================================================= */
 
- for(const [c,s] of COLORS){
+function createHand(){
 
-  for(let n=1;n<=13;n++){
+    hand = [
 
-   for(let k=0;k<2;k++){
+        {n:1,c:"red"},
+        {n:2,c:"red"},
+        {n:3,c:"red"},
+        {n:4,c:"red"},
 
-    deck.push({
-     n,
-     c,
-     s,
-     joker:false,
-     id:crypto.randomUUID()
+        {n:7,c:"blue"},
+        {n:8,c:"blue"},
+        {n:9,c:"blue"},
+
+        {n:10,c:"yellow"},
+        {n:11,c:"yellow"},
+        {n:12,c:"yellow"},
+
+        {n:5,c:"black"},
+        {n:6,c:"black"},
+        {n:7,c:"black"},
+
+        {n:13,c:"red"}
+
+    ];
+
+    renderHand();
+
+}
+
+
+/* =========================================================
+   RENDER HAND
+========================================================= */
+
+function renderHand(){
+
+    const container =
+        document.getElementById("hand");
+
+    container.innerHTML="";
+
+    hand.forEach((tile,index)=>{
+
+        const element =
+            document.createElement("div");
+
+        element.className =
+            `tile ${tile.c}`;
+
+        element.draggable=true;
+
+        element.dataset.index=index;
+
+        element.innerHTML=`
+
+            <div class="tileNumber">
+                ${tile.n}
+            </div>
+
+            <div class="tileSymbol">
+                ${getSymbol(tile.c)}
+            </div>
+
+        `;
+
+        element.addEventListener(
+            "click",
+            ()=>{
+                selectTile(index,element);
+            }
+        );
+
+        element.addEventListener(
+            "dragstart",
+            e=>{
+                e.dataTransfer.setData(
+                    "text/plain",
+                    index
+                );
+            }
+        );
+
+        element.addEventListener(
+            "dragover",
+            e=>{
+                e.preventDefault();
+            }
+        );
+
+        element.addEventListener(
+            "drop",
+            e=>{
+                e.stopPropagation();
+
+                const from =
+                    Number(
+                        e.dataTransfer.getData(
+                            "text/plain"
+                        )
+                    );
+
+                const to=index;
+
+                moveTile(from,to);
+
+            }
+        );
+
+        container.appendChild(element);
+
     });
 
-   }
-
-  }
-
- }
-
- for(let i=0;i<2;i++){
-
-  deck.push({
-   n:0,
-   c:'joker',
-   s:'★',
-   joker:true,
-   id:crypto.randomUUID()
-  });
-
- }
-
- shuffle(deck);
 }
 
-function take(){
 
- return deck.pop() || null;
+/* =========================================================
+   SYMBOLS
+========================================================= */
+
+function getSymbol(color){
+
+    const symbols={
+        red:"●",
+        blue:"◆",
+        yellow:"■",
+        black:"▲"
+    };
+
+    return symbols[color] || "●";
 
 }
 
 
-/* ---------------- TAŞ ---------------- */
+/* =========================================================
+   SELECT TILE
+========================================================= */
 
-function tileHTML(t,index=null){
+function selectTile(index,element){
 
- if(!t)return '';
+    document
+        .querySelectorAll(".tile")
+        .forEach(x=>{
+            x.classList.remove("selected");
+        });
 
- const drag=index!==null
-  ? `draggable="true"
-     data-index="${index}"
-     ondragstart="dragStart(event)"
-     ondragend="dragEnd(event)"`
-  : '';
+    element.classList.add("selected");
 
- return `
- <div class="tile ${t.c}"
-      ${drag}>
+    selectedTile=index;
 
-   <div class="num">
-    ${t.joker?'JOKER':t.n}
-   </div>
-
-   <div class="sym">
-    ${t.joker?'★':t.s}
-   </div>
-
- </div>`;
-}
-
-
-/* ---------------- RENDER ---------------- */
-
-function render(){
-
- $('round').textContent=round+' / 11';
- $('timer').textContent=timer;
- $('serial').textContent=serialLimit+'+';
- $('pairs').textContent=pairLimit+'+';
-
- $('turnLabel').textContent=
-  turn===0?'SEN':'BOT '+(turn+1);
-
- $('turnText').textContent=
-  turn===0?'Sen':'Bot '+(turn+1);
-
- $('count').textContent=hand.length+' taş';
-
- $('hand').innerHTML=
-  hand.map((t,i)=>tileHTML(t,i)).join('');
-
- $('discard').innerHTML=
-  discard
-  ?tileHTML(discard)
-  :'—';
-
- renderMelds();
- renderScores();
-
- for(let i=2;i<=4;i++){
-
-  const seat=$('p'+i);
-
-  seat.classList.toggle(
-   'active',
-   turn===i-1
-  );
-
-  seat.innerHTML=
-   `Oyuncu ${i}<br>
-    <b>Bot</b> • Skor:
-    <b>${scores[i-1]}</b>`;
- }
-}
-
-
-/* ---------------- PERLER ---------------- */
-
-function renderMelds(){
-
- $('melds').innerHTML='';
-
- opened.forEach((meld,mi)=>{
-
-  const div=document.createElement('div');
-
-  div.className='meld';
-
-  div.dataset.meld=mi;
-
-  div.ondragover=e=>{
-   e.preventDefault();
-   div.classList.add('over');
-  };
-
-  div.ondragleave=()=>{
-   div.classList.remove('over');
-  };
-
-  div.ondrop=e=>{
-   div.classList.remove('over');
-   dropOnMeld(e,mi);
-  };
-
-  div.innerHTML=
-   meld.map(t=>tileHTML(t)).join('');
-
-  $('melds').appendChild(div);
- });
-}
-
-
-/* ---------------- SÜRÜKLEME ---------------- */
-
-function dragStart(e){
-
- if(turn!==0 || roundOver){
-  e.preventDefault();
-  return;
- }
-
- draggedIndex=
-  Number(e.currentTarget.dataset.index);
-
- e.currentTarget.classList.add('dragging');
-
- e.dataTransfer.setData(
-  'text/plain',
-  String(draggedIndex)
- );
-
- e.dataTransfer.effectAllowed='move';
-}
-
-function dragEnd(e){
-
- e.currentTarget.classList.remove('dragging');
-
- draggedIndex=null;
+    showToast(
+        `${hand[index].n} numaralı taş seçildi`
+    );
 
 }
 
 
-/* ---------------- ISTAKA ---------------- */
+/* =========================================================
+   MOVE TILE
+========================================================= */
 
-function allowDrop(e){
+function moveTile(from,to){
 
- if(turn!==0 || roundOver)return;
+    if(from===to)
+        return;
 
- e.preventDefault();
- e.currentTarget.classList.add('over');
-}
+    const item =
+        hand.splice(from,1)[0];
 
-function dropToHand(e){
+    hand.splice(to,0,item);
 
- e.preventDefault();
+    selectedTile=null;
 
- e.currentTarget.classList.remove('over');
-
- if(turn!==0 || roundOver)return;
-
- const i=Number(
-  e.dataTransfer.getData('text/plain')
- );
-
- if(!Number.isInteger(i))return;
-
- const t=hand.splice(i,1)[0];
-
- if(!t)return;
-
- const rect=e.currentTarget.getBoundingClientRect();
-
- const x=e.clientX-rect.left;
-
- const children=[
-  ...e.currentTarget.querySelectorAll('.tile')
- ];
-
- let pos=hand.length;
-
- children.forEach((el,index)=>{
-
-  const r=el.getBoundingClientRect();
-
-  if(e.clientX<r.left+r.width/2){
-   pos=Math.min(pos,index);
-  }
-
- });
-
- hand.splice(pos,0,t);
-
- render();
+    renderHand();
 
 }
 
 
-/* ---------------- PER ALANI ---------------- */
+/* =========================================================
+   DROP
+========================================================= */
 
-function dropToOpen(e){
+function allowDrop(event){
 
- e.preventDefault();
-
- if(turn!==0 || roundOver)return;
-
- const i=Number(
-  e.dataTransfer.getData('text/plain')
- );
-
- if(!Number.isInteger(i))return;
-
- const t=hand[i];
-
- if(!t)return;
-
- const test=[
-  ...hand
- ];
-
- test.splice(i,1);
-
- say(
-  'Per yapmak için taşlarını ıstakada yan yana dizip per alanına bırak.'
- );
+    event.preventDefault();
 
 }
 
 
-/* ---------------- PER ÜZERİNE ---------------- */
+function dropTile(event){
 
-function dropOnMeld(e,mi){
+    event.preventDefault();
 
- e.preventDefault();
+    const from =
+        Number(
+            event.dataTransfer.getData(
+                "text/plain"
+            )
+        );
 
- if(turn!==0 || roundOver)return;
+    if(!Number.isInteger(from))
+        return;
 
- const i=Number(
-  e.dataTransfer.getData('text/plain')
- );
+    const target =
+        hand.length-1;
 
- if(!Number.isInteger(i))return;
-
- const t=hand[i];
-
- if(!t)return;
-
- const meld=opened[mi];
-
- const candidate=[
-  ...meld,
-  t
- ];
-
- if(!validRun(candidate)){
-
-  say('Bu taş bu seriye işlenemez.');
-
-  return;
- }
-
- hand.splice(i,1);
-
- opened[mi].push(t);
-
- say('Taş perine işlendi.');
-
- render();
+    moveTile(from,target);
 
 }
 
 
-/* ---------------- SERİ ---------------- */
+/* =========================================================
+   DRAW
+========================================================= */
 
-function validRun(arr){
+function drawTile(){
 
- if(arr.length<3)return false;
+    const randomColor =
+        colors[
+            Math.floor(
+                Math.random()*colors.length
+            )
+        ].name;
 
- let a=arr
-  .filter(t=>!t.joker)
-  .sort((x,y)=>x.n-y.n);
+    const randomNumber =
+        Math.floor(
+            Math.random()*13
+        )+1;
 
- if(a.length!==arr.length)return false;
+    hand.push({
+        n:randomNumber,
+        c:randomColor
+    });
 
- let nums=a.map(t=>t.n);
+    renderHand();
 
- let uniq=[...new Set(nums)];
-
- if(uniq.length!==nums.length)return false;
-
- if(
-  nums.length===3 &&
-  nums.includes(1)&&
-  nums.includes(12)&&
-  nums.includes(13)
- ){
-  return true;
- }
-
- for(let i=1;i<nums.length;i++){
-
-  if(nums[i]!==nums[i-1]+1)
-   return false;
-
- }
-
- return true;
-}
-
-
-/* ---------------- ÇİFT ---------------- */
-
-function validPairs(arr){
-
- if(arr.length<2 || arr.length%2!==0)
-  return false;
-
- if(arr.some(t=>t.joker))
-  return false;
-
- const map={};
-
- arr.forEach(t=>{
-
-  const key=t.n+'_'+t.c;
-
-  map[key]=(map[key]||0)+1;
-
- });
-
- return Object.values(map)
-  .every(v=>v===2);
-}
-
-
-/* ---------------- PERİ OLUŞTUR ---------------- */
-
-function tryCreateMeld(){
-
- if(turn!==0 || roundOver)return;
-
- const selected=
-  [...document.querySelectorAll(
-   '#hand .tile.selected'
-  )];
+    showToast(
+        `${randomNumber} numaralı taş çekildi`
+    );
 
 }
 
 
-/*
- Manuel kullanımda kullanıcı taşları
- yan yana getirir.
-
- Uzun basma / çift tıklama ile seçilen
- ardışık taşlardan per oluşturulur.
-*/
-
-let selectedTiles=[];
-
-document.addEventListener(
- 'dblclick',
- function(e){
-
-  const tile=e.target.closest(
-   '#hand .tile'
-  );
-
-  if(!tile)return;
-
-  if(turn!==0 || roundOver)return;
-
-  const i=Number(tile.dataset.index);
-
-  if(!Number.isInteger(i))return;
-
-  if(selectedTiles.includes(i)){
-
-   selectedTiles=
-    selectedTiles.filter(x=>x!==i);
-
-  }else{
-
-   selectedTiles.push(i);
-
-  }
-
-  tile.classList.toggle(
-   'selected',
-   selectedTiles.includes(i)
-  );
-
-  if(selectedTiles.length>=3){
-
-   createSelectedMeld();
-
-  }
-
- }
-);
-
-
-function createSelectedMeld(){
-
- const arr=
-  selectedTiles
-   .sort((a,b)=>a-b)
-   .map(i=>hand[i]);
-
- if(
-  !validRun(arr) &&
-  !validPairs(arr)
- ){
-
-  say(
-   'Bu taşlar geçerli bir seri veya çift değil.'
-  );
-
-  return;
- }
-
- let score=0;
-
- if(validPairs(arr)){
-
-  score=arr.length/2;
-
-  if(score<pairLimit){
-
-   say(
-    'Çift açmak için en az '+
-    pairLimit+
-    ' çift gerekli.'
-   );
-
-   return;
-  }
-
-  pairLimit=score+1;
-
- }else{
-
-  score=
-   arr.reduce(
-    (s,t)=>s+(t.joker?0:t.n),
-    0
-   );
-
-  if(score<serialLimit){
-
-   say(
-    'Seri açmak için '+
-    serialLimit+
-    '+ değer gerekli.'
-   );
-
-   return;
-  }
-
-  serialLimit=score+1;
- }
-
- const set=
-  new Set(selectedTiles);
-
- const meld=
-  hand.filter((_,i)=>set.has(i));
-
- hand=
-  hand.filter((_,i)=>!set.has(i));
-
- opened.push(meld);
-
- selectedTiles=[];
-
- say(
-  validPairs(meld)
-  ?'Çift açıldı.'
-  :'Seri açıldı.'
- );
-
- render();
-
-}
-
-
-/* ---------------- DESTE ---------------- */
-
-function drawDeck(){
-
- if(roundOver || turn!==0)return;
-
- if(firstTurn){
-
-  say(
-   'İlk oyuncu ilk turda taş çekmeden oynayabilir.'
-  );
-
-  return;
- }
-
- const t=take();
-
- if(!t){
-
-  say('Deste bitti.');
-
-  return;
- }
-
- hand.push(t);
-
- firstTurn=false;
-
- say('Taşı aldın. Istakana sürükleyip yerleştir.');
-
- render();
-
- clock();
-
-}
-
-
-/* ---------------- ATILAN TAŞ ---------------- */
+/* =========================================================
+   TAKE DISCARD
+========================================================= */
 
 function takeDiscard(){
 
- if(roundOver || turn!==0)return;
+    const discard =
+        document.getElementById("discard");
 
- if(firstTurn){
+    const number =
+        Number(
+            discard
+                .querySelector(".tileNumber")
+                .textContent
+        );
 
-  say(
-   'İlk turda atılan taş alınamaz.'
-  );
+    const color =
+        discard.classList.contains("red")
+            ? "red"
+            : discard.classList.contains("blue")
+            ? "blue"
+            : discard.classList.contains("yellow")
+            ? "yellow"
+            : "black";
 
-  return;
- }
+    hand.push({
+        n:number,
+        c:color
+    });
 
- if(!discard){
+    renderHand();
 
-  say('Alınacak atılan taş yok.');
-
-  return;
- }
-
- hand.push(discard);
-
- say(
-  'Atılan taşı aldın. Şimdi taşını ıstakana yerleştir.'
- );
-
- discard=null;
-
- firstTurn=false;
-
- render();
-
- clock();
+    showToast(
+        `${number} numaralı atılan taş alındı`
+    );
 
 }
 
 
-/* ---------------- TAŞ ATMA ---------------- */
+/* =========================================================
+   DISCARD
+========================================================= */
 
-/*
- Taşı atılan alana sürüklemek için
- özel drop sistemi.
-*/
+function discardSelected(){
 
-$('discardArea').addEventListener(
- 'dragover',
- e=>{
+    if(selectedTile===null){
 
-  if(turn!==0 || roundOver)return;
+        showToast(
+            "Önce atmak istediğin taşı seç."
+        );
 
-  e.preventDefault();
+        return;
 
-  $('discardArea')
-   .classList.add('over');
+    }
 
- }
-);
+    const tile =
+        hand[selectedTile];
 
-$('discardArea').addEventListener(
- 'dragleave',
- ()=>{
-  $('discardArea')
-   .classList.remove('over');
- }
-);
+    const discard =
+        document.getElementById("discard");
 
-$('discardArea').addEventListener(
- 'drop',
- e=>{
+    discard.className =
+        `tile tileSmall ${tile.c}`;
 
-  e.preventDefault();
+    discard.innerHTML=`
 
-  $('discardArea')
-   .classList.remove('over');
+        <div class="tileNumber">
+            ${tile.n}
+        </div>
 
-  if(turn!==0 || roundOver)return;
+        <div class="tileSymbol">
+            ${getSymbol(tile.c)}
+        </div>
 
-  const i=Number(
-   e.dataTransfer.getData('text/plain')
-  );
+    `;
 
-  if(!Number.isInteger(i))return;
+    hand.splice(selectedTile,1);
 
-  const t=hand[i];
+    selectedTile=null;
 
-  if(!t)return;
+    renderHand();
 
-  /*
-   İşlek kontrolü
-  */
+    showToast(
+        `${tile.n} numaralı taş atıldı.`
+    );
 
-  if(canPlayOwnMeld(t)){
-
-   scores[0]+=100;
-
-   say(
-    '🚨 İŞLEK TAŞ ATTIN! +100 CEZA'
-   );
-
-  }else{
-
-   say('Taş atıldı. Sıra rakipte.');
-
-  }
-
-  discard=hand.splice(i,1)[0];
-
-  selectedTiles=[];
-
-  firstTurn=false;
-
-  render();
-
-  if(hand.length===0){
-
-   finish(0);
-
-   return;
-
-  }
-
-  nextTurn();
-
- }
-);
-
-
-/* ---------------- İŞLEK ---------------- */
-
-function canPlayOwnMeld(t){
-
- return opened.some(
-  m=>
-   m.length>=3 &&
-   validRun([...m,t])
- );
+    nextTurn();
 
 }
 
 
-/* ---------------- SÜRE ---------------- */
+/* =========================================================
+   MODE
+========================================================= */
 
-function stopClock(){
+function selectMode(mode){
 
- clearInterval(timerId);
+    selectedMode=mode;
 
- timerId=null;
+    document
+        .getElementById("seriesBtn")
+        .classList.toggle(
+            "active",
+            mode==="series"
+        );
 
-}
+    document
+        .getElementById("pairBtn")
+        .classList.toggle(
+            "active",
+            mode==="pair"
+        );
 
-function clock(){
+    if(mode==="series"){
 
- stopClock();
+        showToast(
+            "Seri modu seçildi."
+        );
 
- timer=25;
+    }else{
 
- render();
+        showToast(
+            "Çift modu seçildi."
+        );
 
- timerId=setInterval(()=>{
-
-  timer--;
-
-  render();
-
-  if(timer<=0){
-
-   stopClock();
-
-   timeout();
-
-  }
-
- },1000);
-
-}
-
-
-/*
- Manuel oyunda süre dolarsa
- taş otomatik atılmıyor.
-
- Sadece kullanıcıya uyarı verir.
-*/
-
-function timeout(){
-
- if(roundOver || turn!==0)return;
-
- say(
-  '⏰ 25 saniye doldu. Hamleni kendin yap.'
- );
-
- clock();
+    }
 
 }
 
 
-/* ---------------- BOT ---------------- */
+/* =========================================================
+   TIMER
+========================================================= */
 
-function botTurn(){
+function startTimer(){
 
- if(roundOver)return;
+    clearInterval(timerInterval);
 
- let bot=[];
+    timerValue=25;
 
- /*
-  Basit bot oynama sistemi
- */
+    updateTimer();
 
- const t=take();
+    timerInterval =
+        setInterval(()=>{
 
- if(t)bot.push(t);
+            timerValue--;
 
- /*
-  Bot rastgele taş atar.
- */
+            updateTimer();
 
- if(bot.length){
+            if(timerValue<=0){
 
-  discard=bot[0];
+                clearInterval(timerInterval);
 
- }
+                showToast(
+                    "Süre doldu!"
+                );
 
- logBot();
+                nextTurn();
 
- nextTurn();
+            }
 
-}
-
-function logBot(){
-
- say(
-  'Bot hamlesini yaptı. Sıra sende.'
- );
+        },1000);
 
 }
 
 
-/* ---------------- SIRA ---------------- */
+function updateTimer(){
+
+    document
+        .getElementById("timerText")
+        .textContent=timerValue;
+
+    const degrees =
+        ((25-timerValue)/25)*360;
+
+    document
+        .getElementById("timer")
+        .style.background=
+        `conic-gradient(
+            #d7aa52 ${degrees}deg,
+            #202421 ${degrees}deg
+        )`;
+
+}
+
+
+/* =========================================================
+   NEXT TURN
+========================================================= */
 
 function nextTurn(){
 
- if(roundOver)return;
+    round++;
 
- turn=(turn+1)%4;
+    if(round>11){
 
- firstTurn=false;
+        finishGame();
 
- render();
+        return;
 
- if(turn===0){
+    }
 
-  clock();
+    document
+        .getElementById("round")
+        .textContent=round;
 
- }else{
-
-  stopClock();
-
-  setTimeout(botTurn,800);
-
- }
+    startTimer();
 
 }
 
 
-/* ---------------- BİTİŞ ---------------- */
+/* =========================================================
+   FINISH GAME
+========================================================= */
 
-function remainingScore(){
+function finishGame(){
 
- return hand.reduce(
-  (s,t)=>s+(t.joker?0:t.n),
-  0
- );
+    clearInterval(timerInterval);
 
-}
+    score+=Math.floor(
+        Math.random()*30
+    )+20;
 
-function finish(winner){
+    document
+        .getElementById("myScore")
+        .textContent=score;
 
- roundOver=true;
+    showToast(
+        `El tamamlandı! Skorun: ${score}`
+    );
 
- stopClock();
-
- if(winner===0){
-
-  scores[0]-=100;
-
- }
-
- say(
-  '🏆 Eli sen bitirdin! -100 puan.'
- );
-
- render();
-
- setTimeout(
-  nextRound,
-  1800
- );
+    round=1;
 
 }
 
 
-/* ---------------- YENİ EL ---------------- */
+/* =========================================================
+   PROFILE
+========================================================= */
 
-function nextRound(){
+function openProfile(){
 
- if(round>=11){
-
-  const min=Math.min(...scores);
-
-  const winners=
-   scores
-    .map((s,i)=>s===min?i:null)
-    .filter(x=>x!==null);
-
-  roundOver=true;
-
-  say(
-   '🏆 11 EL TAMAMLANDI! Kazanan: '+
-   winners
-    .map(i=>i===0?'SEN':'BOT '+(i+1))
-    .join(', ')
-  );
-
-  render();
-
-  return;
- }
-
- round++;
-
- turn=(turn+1)%4;
-
- firstTurn=turn===0;
-
- roundOver=false;
-
- serialLimit=21;
-
- pairLimit=5;
-
- discard=null;
-
- opened=[];
-
- selectedTiles=[];
-
- makeDeck();
-
- hand=[];
-
- /*
-  İnsan ilk oyuncuysa 15,
-  diğer oyuncular bot.
- */
-
- const playerCount=
-  turn===0?15:14;
-
- for(let i=0;i<playerCount;i++){
-
-  const t=take();
-
-  if(t)hand.push(t);
-
- }
-
- render();
-
- say(
-  turn===0
-  ?'Yeni el başladı. 15 taşla ilk sıra sende.'
-  :'Yeni el başladı. Bot oynuyor.'
- );
-
- if(turn===0){
-
-  clock();
-
- }else{
-
-  setTimeout(botTurn,900);
-
- }
+    document
+        .getElementById("profileModal")
+        .classList.add("show");
 
 }
 
 
-/* ---------------- SKOR ---------------- */
+function closeProfile(){
 
-function renderScores(){
-
- $('score').innerHTML=
- `
- <div class="scoreline">
-  <b>Oyuncu</b>
-  <b>Toplam</b>
-  <b>Durum</b>
- </div>
-
- ${scores.map((s,i)=>`
-
- <div class="scoreline">
-
-  <span>
-   ${i===0?'Sen':'Oyuncu '+(i+1)}
-  </span>
-
-  <b>${s}</b>
-
-  <span>
-   ${i===0?'İnsan':'Bot'}
-  </span>
-
- </div>
-
- `).join('')}
- `;
+    document
+        .getElementById("profileModal")
+        .classList.remove("show");
 
 }
 
 
-/* ---------------- BAŞLAT ---------------- */
+/* =========================================================
+   TOAST
+========================================================= */
 
-function start(){
+let toastTimer;
 
- makeDeck();
+function showToast(message){
 
- hand=[];
+    const toast =
+        document.getElementById("toast");
 
- scores=[0,0,0,0];
+    toast.textContent=message;
 
- round=1;
+    toast.classList.add("show");
 
- turn=0;
+    clearTimeout(toastTimer);
 
- firstTurn=true;
+    toastTimer =
+        setTimeout(()=>{
 
- roundOver=false;
+            toast.classList.remove("show");
 
- serialLimit=21;
-
- pairLimit=5;
-
- discard=null;
-
- opened=[];
-
- selectedTiles=[];
-
- for(let i=0;i<15;i++){
-
-  const t=take();
-
-  if(t)hand.push(t);
-
- }
-
- render();
-
- clock();
+        },2200);
 
 }
 
-start();
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Escape"){
+
+            closeProfile();
+
+        }
+
+        if(event.key===" "){
+
+            event.preventDefault();
+
+            if(selectedTile!==null){
+
+                discardSelected();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL PREVIEW
+========================================================= */
+
+createHand();
 
 </script>
 
