@@ -6,236 +6,2871 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="21 Okey">
-<link rel="manifest" href="manifest.webmanifest">
-<title>21 Okey — Oynanabilir Test</title><style>
-:root{--felt:#0d5c3a;--felt2:#08472d;--gold:#f3c74f;--card:#fffdf7;--ink:#172018}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(#0d6b43,#063c27);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;min-height:100vh}
-.app{max-width:900px;margin:auto;padding:10px 10px 30px}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;position:sticky;top:0;z-index:5;background:#08472ddd;backdrop-filter:blur(8px);padding:9px;border-radius:0 0 14px 14px}
-h1{font-size:20px;margin:0}.sub{font-size:11px;opacity:.8}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.stat{background:#062f20cc;border-radius:10px;padding:8px;text-align:center;font-size:12px}.stat b{display:block;font-size:17px;color:var(--gold)}
-.table{background:radial-gradient(circle at 50% 45%,#15754b,#08472d 70%);border:2px solid #1d8659;border-radius:20px;padding:10px;box-shadow:inset 0 0 35px #0005}
-.seat{background:#062f20aa;border-radius:10px;padding:7px;margin:5px;font-size:12px}.seat.active{outline:2px solid var(--gold)}.seatrow{display:grid;grid-template-columns:1fr 1fr;gap:5px}.seat b{color:var(--gold)}
-.center{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;text-align:center;gap:8px;min-height:130px}.pile{display:flex;justify-content:center;align-items:center;min-height:90px}
-.tile{border:1px solid #bbb;background:var(--card);color:#111;border-radius:7px;width:48px;height:68px;font-size:23px;font-weight:800;box-shadow:0 3px 5px #0005;touch-action:manipulation}.tile.red{color:#c62828}.tile.blue{color:#1769aa}.tile.green{color:#14804b}.tile.black{color:#111}.tile.joker{color:#b8860b}.tile.sel{transform:translateY(-9px);outline:3px solid var(--gold)}
-.handwrap{background:#062f20aa;border-radius:14px;padding:9px;margin-top:8px}.hand{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.hand .tile{width:46px;height:65px}
-.melds{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.meld{background:#ffffff18;border:1px solid #ffffff33;border-radius:8px;padding:5px}.meld .tile{width:36px;height:50px;font-size:16px;margin:1px}
-.actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:8px 0}.btn{border:0;border-radius:10px;padding:11px 12px;font-weight:800;touch-action:manipulation}.gold{background:var(--gold);color:#2a2205}.light{background:#eee;color:#111}.redbtn{background:#d94d4d;color:#fff}.btn:disabled{opacity:.4}
-.msg{background:#062f20cc;border-radius:10px;padding:9px;text-align:center;font-size:13px;min-height:38px}.score{background:#062f20aa;border-radius:12px;padding:9px;margin-top:8px}.scoreline{display:grid;grid-template-columns:1.5fr repeat(2,1fr);gap:4px;padding:4px;border-bottom:1px solid #ffffff1a;font-size:12px}.scoreline b{color:var(--gold)}
-.rules{font-size:12px;line-height:1.45;background:#062f20aa;border-radius:12px;padding:10px;margin-top:8px}.log{max-height:130px;overflow:auto;font-size:11px;background:#03271a;padding:7px;border-radius:8px;margin-top:7px}.log div{padding:3px 0;border-bottom:1px solid #ffffff12}
-.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.box{background:#fff;color:#111;border-radius:16px;max-width:500px;width:100%;padding:18px}.box h2{margin-top:0}.box button{margin-top:8px}
-@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.tile{width:43px;height:62px;font-size:20px}.hand .tile{width:41px;height:59px;font-size:19px}.center{grid-template-columns:1fr 1fr;}.center .status{grid-column:1/-1;order:-1}.top{position:static}}
-/* 21 OKEY - PREMIUM MASA */
+
+<title>21 Okey Premium</title>
+
+<style>
+:root{
+  --black:#020202;
+  --black2:#080808;
+  --black3:#121212;
+  --gold:#c99a25;
+  --gold2:#f5d66a;
+  --gold3:#765510;
+  --red:#e53935;
+  --blue:#2585d7;
+  --green:#22a45a;
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+  background:
+    radial-gradient(circle at 50% 20%,#202020,#080808 50%,#000 100%);
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
 body{
-  background:radial-gradient(circle at 50% 20%,#17845a 0%,#0b5638 50%,#032217 100%);
+  overflow-x:hidden;
+}
+
+button{
+  font-family:inherit;
 }
 
 .app{
-  max-width:1100px;
-  padding:14px 12px 40px;
+  width:100%;
+  max-width:1250px;
+  margin:auto;
+  padding:9px 8px 35px;
 }
 
+/* =========================
+   ÜST
+========================= */
+
 .top{
-  background:linear-gradient(135deg,#063b27ee,#0b6846ee);
-  border:1px solid #d9b83f66;
-  box-shadow:0 8px 25px #0007;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+
+  padding:11px 14px;
+
+  background:
+    linear-gradient(145deg,#181818,#030303);
+
+  border:1px solid #705518;
+  border-radius:15px;
+
+  box-shadow:
+    0 8px 22px #000,
+    inset 0 1px #ffffff12;
 }
 
 .top h1{
-  font-size:24px;
-  text-shadow:0 2px 8px #0009;
+  margin:0;
+  font-size:23px;
+  letter-spacing:2px;
+  color:var(--gold2);
+  text-shadow:0 2px 4px #000;
 }
 
-.table{
-  background:radial-gradient(circle at 50% 45%,#1b8958 0%,#0a5939 58%,#063a27 100%);
-  border:3px solid #d9b83f;
-  border-radius:28px;
-  box-shadow:inset 0 0 45px #0008,0 12px 30px #0008;
-}
-
-.seat{
-  background:linear-gradient(135deg,#073523ee,#031f16ee);
-  border:1px solid #ffffff20;
-  box-shadow:0 5px 14px #0006;
-}
-
-.seat.active{
-  outline:2px solid #f3c74f;
-  box-shadow:0 0 18px #f3c74f77;
-}
-
-.handwrap{
-  background:linear-gradient(180deg,#073523ee,#031f16ee);
-  border:1px solid #ffffff20;
-  box-shadow:0 7px 20px #0007;
-}
-
-.tile{
-  background:linear-gradient(145deg,#fffefa,#e7e3d8);
-  border:1px solid #aaa69d;
-  box-shadow:0 4px 7px #0007,inset 0 1px 0 #fff;
-  transition:transform .15s,box-shadow .15s;
-}
-
-.tile.sel{
-  transform:translateY(-10px) scale(1.04);
-  outline:3px solid #f3c74f;
-  box-shadow:0 0 18px #f3c74f88,0 8px 15px #0008;
-}
-
-.gold{
-  background:linear-gradient(135deg,#ffe27a,#d7a728);
-  color:#211900;
+.sub{
+  font-size:10px;
+  color:#999;
 }
 
 .btn{
-  box-shadow:0 4px 10px #0005;
+  border:1px solid #876619;
+  border-radius:10px;
+  padding:9px 12px;
+  font-weight:800;
+  background:linear-gradient(145deg,#f5d66a,#9a7019);
+  color:#181000;
 }
+
+/* =========================
+   İSTATİSTİK
+========================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin:8px 0;
+}
+
+.stat{
+  padding:7px;
+  text-align:center;
+
+  background:
+    linear-gradient(145deg,#151515,#050505);
+
+  border:1px solid #3e300d;
+  border-radius:10px;
+
+  color:#888;
+  font-size:10px;
+}
+
+.stat b{
+  display:block;
+  color:var(--gold2);
+  font-size:16px;
+  margin-top:2px;
+}
+
+/* =========================
+   MASA
+========================= */
+
+.table{
+  position:relative;
+
+  min-height:710px;
+
+  padding:18px 10px 22px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #191919 0%,
+      #0b0b0b 48%,
+      #010101 100%
+    );
+
+  border:4px solid #a67c20;
+  border-radius:30px;
+
+  box-shadow:
+    inset 0 0 70px #000,
+    inset 0 0 15px #d7a92e20,
+    0 20px 45px #000;
+
+  overflow:hidden;
+}
+
+.table:before{
+  content:"";
+  position:absolute;
+  inset:9px;
+
+  border:1px solid #d7a92e32;
+  border-radius:23px;
+
+  pointer-events:none;
+}
+
+.table-logo{
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:6px;
+
+  color:#c99a25;
+  opacity:.12;
+
+  pointer-events:none;
+}
+
+/* =========================
+   OYUNCU KOLTUKLARI
+========================= */
+
+.seatrow{
+  position:relative;
+  z-index:4;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.seat{
+  padding:8px 10px;
+
+  background:
+    linear-gradient(145deg,#171717,#050505);
+
+  border:1px solid #49370e;
+  border-radius:11px;
+
+  font-size:11px;
+  color:#ccc;
+
+  box-shadow:
+    0 5px 12px #000,
+    inset 0 1px #ffffff0b;
+}
+
+.seat b{
+  color:var(--gold2);
+}
+
+.seat.active{
+  border-color:var(--gold2);
+
+  box-shadow:
+    0 0 18px #d7a92e66,
+    inset 0 0 12px #d7a92e12;
+}
+
+/* =========================
+   ORTA MASA
+========================= */
+
+.center{
+  position:relative;
+  z-index:3;
+
+  min-height:260px;
+
+  display:grid;
+  grid-template-columns:1fr 1.4fr 1fr;
+
+  align-items:center;
+
+  text-align:center;
+}
+
+.zone-title{
+  margin-bottom:7px;
+
+  font-size:9px;
+  letter-spacing:2px;
+  color:#777;
+}
+
+.center-logo{
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:4px;
+
+  color:#d3a633;
+
+  text-shadow:
+    0 2px 5px #000,
+    0 0 18px #d7a92e44;
+}
+
+.turn{
+  margin-top:8px;
+  color:#aaa;
+  font-size:11px;
+}
+
+.turn b{
+  color:var(--gold2);
+}
+
+/* =========================
+   DESTE
+========================= */
+
+.deck{
+  width:48px;
+  height:68px;
+
+  border-radius:7px;
+
+  border:2px solid #b98b27;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #0b0b0b,
+      #0b0b0b 4px,
+      #181818 4px,
+      #181818 8px
+    );
+
+  color:var(--gold2);
+
+  font-size:25px;
+  font-weight:900;
+
+  box-shadow:
+    0 7px 13px #000,
+    inset 0 0 0 2px #3e2d09;
+}
+
+.deck:active{
+  transform:scale(.96);
+}
+
+/* =========================
+   ATILAN TAŞ
+========================= */
+
+.discard{
+  min-height:70px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* =========================
+   PREMIUM ISTAKA
+========================= */
+
+.hand-area{
+  position:relative;
+  z-index:10;
+
+  margin-top:2px;
+}
+
+.player-name{
+  text-align:center;
+
+  margin-bottom:7px;
+
+  font-size:12px;
+  font-weight:900;
+
+  letter-spacing:3px;
+
+  color:var(--gold2);
+}
+
+/*
+  ISTAKA GÖVDESİ
+*/
+
+.rack{
+  position:relative;
+
+  height:210px;
+
+  padding:8px 12px;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f1cc55 0%,
+      #b48722 7%,
+      #6b4d0d 15%,
+      #c0952c 48%,
+      #7b5a12 84%,
+      #3b2906 100%
+    );
+
+  border:2px solid #f3d46c;
+
+  box-shadow:
+    0 17px 30px #000,
+    inset 0 3px 3px #fff6,
+    inset 0 -12px 16px #211500,
+    0 0 25px #d7a92e25;
+
+  transform:perspective(700px) rotateX(4deg);
+}
+
+/*
+  ÖN KALINLIK
+*/
+
+.rack-depth{
+  position:absolute;
+
+  left:5px;
+  right:5px;
+  bottom:-14px;
+
+  height:18px;
+
+  border-radius:0 0 15px 15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #765610,
+      #2a1c03
+    );
+
+  border:1px solid #9d751d;
+
+  box-shadow:0 8px 12px #000;
+}
+
+/*
+  ORTA BÖLÜM / İSİM
+*/
+
+.rack-center{
+  position:absolute;
+
+  left:12px;
+  right:12px;
+
+  top:50%;
+
+  height:32px;
+
+  transform:translateY(-50%);
+
+  border-radius:9px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #dcb646,
+      #775610,
+      #bd8f25
+    );
+
+  border:1px solid #f1d16b;
+
+  box-shadow:
+    0 3px 7px #000,
+    inset 0 1px #fff5;
+}
+
+.rack-center-shadow{
+  position:absolute;
+
+  left:18px;
+  right:18px;
+
+  top:calc(50% + 15px);
+
+  height:7px;
+
+  background:#0009;
+
+  border-radius:50%;
+
+  filter:blur(2px);
+}
+
+.rack-name{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  z-index:20;
+
+  white-space:nowrap;
+
+  padding:4px 15px;
+
+  border-radius:7px;
+
+  background:#050505e8;
+
+  border:1px solid #d7a92e;
+
+  color:var(--gold2);
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  pointer-events:none;
+}
+
+/* =========================
+   İKİ RAF
+========================= */
+
+.rack-row{
+  position:absolute;
+
+  left:12px;
+  right:12px;
+
+  display:flex;
+  align-items:flex-end;
+
+  gap:4px;
+
+  height:72px;
+
+  overflow-x:auto;
+  overflow-y:visible;
+
+  scrollbar-width:none;
+
+  padding:5px 3px;
+}
+
+.rack-row::-webkit-scrollbar{
+  display:none;
+}
+
+.rack-row.top-row{
+  top:7px;
+}
+
+.rack-row.bottom-row{
+  bottom:8px;
+}
+
+/* =========================
+   TAŞ
+========================= */
+
+.tile{
+  position:relative;
+
+  flex:0 0 auto;
+
+  width:42px;
+  height:62px;
+
+  border-radius:7px;
+
+  border:1px solid #484848;
+
+  background:
+    linear-gradient(
+      145deg,
+      #303030 0%,
+      #151515 43%,
+      #050505 100%
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#eee;
+
+  font-size:20px;
+  font-weight:900;
+
+  box-shadow:
+    0 5px 8px #000,
+    inset 0 1px #ffffff22,
+    inset 0 -2px 4px #000;
+
+  text-shadow:
+    0 2px 2px #000;
+
+  user-select:none;
+
+  touch-action:none;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.tile.red{
+  color:#ed3d39;
+}
+
+.tile.blue{
+  color:#2688dc;
+}
+
+.tile.green{
+  color:#24a85c;
+}
+
+.tile.black{
+  color:#eeeeee;
+}
+
+.tile.joker{
+  color:var(--gold2);
+}
+
+.tile.selected{
+  transform:translateY(-12px);
+
+  border-color:var(--gold2);
+
+  box-shadow:
+    0 0 17px #d7a92eaa,
+    0 10px 15px #000;
+}
+
+/* Sürüklenen taş */
+
+.tile.dragging{
+  position:fixed;
+  z-index:9999;
+
+  pointer-events:none;
+
+  transform:scale(1.08) rotate(-2deg);
+
+  box-shadow:
+    0 15px 35px #000,
+    0 0 20px #d7a92e66;
+}
+
+/* =========================
+   SAĞ SERİ / ÇİFT
+========================= */
+
+.side-options{
+  position:absolute;
+
+  right:8px;
+  top:52%;
+
+  transform:translateY(-50%);
+
+  z-index:30;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:7px;
+}
+
+.option{
+  width:58px;
+  height:53px;
+
+  border-radius:11px;
+
+  border:1px solid #594311;
+
+  background:
+    linear-gradient(145deg,#1c1c1c,#050505);
+
+  color:#888;
+
+  font-size:10px;
+  font-weight:900;
+
+  box-shadow:
+    0 6px 12px #000;
+}
+
+.option.active{
+  color:#120d00;
+
+  background:
+    linear-gradient(145deg,#ffe37b,#a87817);
+
+  border-color:#ffe995;
+
+  box-shadow:
+    0 0 18px #d7a92e77,
+    0 7px 12px #000;
+}
+
+/* =========================
+   MESAJ
+========================= */
+
+.msg{
+  position:relative;
+  z-index:20;
+
+  margin-top:20px;
+
+  min-height:40px;
+
+  padding:9px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  background:#070707e8;
+
+  border:1px solid #3d2e0b;
+  border-radius:10px;
+
+  color:#ccc;
+
+  font-size:11px;
+}
+
+/* =========================
+   SKOR
+========================= */
 
 .score,
 .rules{
-  background:linear-gradient(135deg,#073523ee,#031f16ee);
-  border:1px solid #ffffff18;
-  box-shadow:0 6px 18px #0006;
+  margin-top:10px;
+
+  padding:10px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(145deg,#141414,#050505);
+
+  border:1px solid #44330d;
+
+  box-shadow:0 8px 18px #000;
+}
+
+.scoreline{
+  display:grid;
+
+  grid-template-columns:1.5fr 1fr 1fr;
+
+  gap:5px;
+
+  padding:4px;
+
+  border-bottom:1px solid #ffffff0c;
+
+  font-size:11px;
+}
+
+.scoreline b{
+  color:var(--gold2);
+}
+
+.log{
+  max-height:110px;
+
+  overflow:auto;
+
+  margin-top:6px;
+
+  padding:6px;
+
+  background:#000;
+
+  border-radius:7px;
+
+  color:#888;
+
+  font-size:10px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:16px;
+
+  background:#000d;
+
+  z-index:200;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.box{
+  width:100%;
+  max-width:480px;
+
+  padding:18px;
+
+  border-radius:17px;
+
+  background:
+    linear-gradient(145deg,#191919,#050505);
+
+  border:1px solid #b88925;
+
+  box-shadow:0 20px 50px #000;
+}
+
+.box h2{
+  margin-top:0;
+  color:var(--gold2);
+}
+
+.box li{
+  margin:7px 0;
+  font-size:12px;
+}
+
+/* =========================
+   MOBİL
+========================= */
+
+@media(max-width:700px){
+
+  .app{
+    padding:6px 5px 30px;
+  }
+
+  .top h1{
+    font-size:19px;
+  }
+
+  .table{
+    min-height:650px;
+    border-radius:24px;
+    padding:14px 6px 20px;
+  }
+
+  .center{
+    min-height:225px;
+    grid-template-columns:1fr 1.3fr 1fr;
+  }
+
+  .center-logo{
+    font-size:20px;
+    letter-spacing:3px;
+  }
+
+  .rack{
+    height:205px;
+  }
+
+  .rack-row{
+    left:8px;
+    right:8px;
+  }
+
+  .tile{
+    width:37px;
+    height:57px;
+    font-size:18px;
+  }
+
+  .side-options{
+    right:4px;
+  }
+
+  .option{
+    width:50px;
+    height:48px;
+    font-size:9px;
+  }
+}
+
+@media(max-width:430px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .seat{
+    font-size:9px;
+  }
+
+  .tile{
+    width:34px;
+    height:53px;
+    font-size:16px;
+  }
+
+  .rack{
+    height:195px;
+  }
+
+  .rack-name{
+    font-size:8px;
+    padding:3px 9px;
+  }
+
+  .side-options{
+    top:50%;
+  }
+
 }
 </style>
 </head>
+
 <body>
+
 <div class="app">
-  <div class="top"><div><h1>🀄 21 Okey</h1><div class="sub">Oynanabilir yerel test sürümü • 1 insan + 3 bot</div></div><button class="btn light" onclick="showRules()">Kurallar</button></div>
-  <div class="stats">
-    <div class="stat">EL <b id="round">1/11</b></div>
-    <div class="stat">SÜRE <b id="timer">25</b></div>
-    <div class="stat">SERİ <b id="serial">21+</b></div>
-    <div class="stat">ÇİFT <b id="pairs">5+</b></div>
-  </div>
 
-  <div class="table">
-    <div class="seatrow">
-      <div class="seat" id="p2">Oyuncu 2 (Bot)<br>Skor: <b>0</b></div>
-      <div class="seat" id="p3">Oyuncu 3 (Bot)<br>Skor: <b>0</b></div>
-    </div>
-    <div class="center">
-      <div class="pile"><div><div class="sub">Deste</div><button id="deckBtn" class="tile" onclick="drawFromDeck()">🂠</button></div></div>
-      <div class="status"><div class="sub">Atılan</div><div class="pile" id="discardPile">—</div></div>
-      <div class="pile"><div><div class="sub">Sıra</div><b id="turnLabel">Sen</b></div></div>
-    </div>
-    <div class="seat" id="p4">Oyuncu 4 (Bot)<br>Skor: <b>0</b></div>
+<div class="top">
 
-    <div class="handwrap">
-      <div style="display:flex;justify-content:space-between;align-items:center"><b>Senin ıstakan</b><span id="count">15 taş</span></div>
-      <div class="hand" id="hand"></div>
-      <div class="actions">
-        <button class="btn gold" id="drawBtn" onclick="drawFromDeck()">Deste Çek</button>
-        <button class="btn light" id="takeBtn" onclick="takeDiscard()">Atılanı Al</button>
-        <button class="btn light" id="openBtn" onclick="openSelected()">Seçilenleri Aç</button>
-        <button class="btn redbtn" id="discardBtn" onclick="discardSelected()">Seçiliyi At</button>
-      </div>
-      <div class="msg" id="msg">İlk oyuncu sensin. 15 taşla başladın; ilk turda taş çekmeden açabilir veya bir taş atabilirsin.</div>
+  <div>
+    <h1>🀄 21 OKEY</h1>
+    <div class="sub">
+      PREMIUM OKEY MASASI
     </div>
   </div>
 
-  <div class="score" id="score"></div>
-  <div class="rules">
-    <b>Test edilen ana kurallar:</b> 11 el • saat yönü • ilk oyuncu 15 taş, diğerleri 14 • 25 sn • seri 21+ • çift minimum 5 ve katlamalı • 12-13-1 geçerli • bitiş -100 • işlek atma +100 • senin perine işlenen taş değeri ×10 ceza.
-    <div class="log" id="log"></div>
-  </div>
+  <button
+    class="btn"
+    onclick="showRules()">
+    Kurallar
+  </button>
+
 </div>
 
-<div class="modal" id="modal"><div class="box"><h2>21 Okey — Kurallar</h2>
-<ul><li>İlk oyuncu 15 taşla başlar, ilk turda çekmez.</li><li>Seri açılışı 21 ve üzeri; sonraki seri açılışı katlamalıdır.</li><li>Çift açılışı minimum 5 çifttir; sonraki çift açılışı katlamalıdır.</li><li>12-13-1 serisi geçerlidir.</li><li>Başkasının senin açık perine işlediği her taşın değeri ×10 sana ceza yazılır.</li><li>İşlek taş atmak +100'dür; yanlışlıkla atmak da cezalıdır.</li><li>Bir oyuncu bittiğinde el kapanır. Biten -100 alır; diğerlerinin kalan taşları yazılır.</li><li>11 el sonunda en düşük toplam kazanır.</li></ul>
-<button class="btn gold" onclick="hideRules()">Kapat</button></div></div>
+
+<div class="stats">
+
+  <div class="stat">
+    EL
+    <b id="round">1/11</b>
+  </div>
+
+  <div class="stat">
+    SÜRE
+    <b id="timer">25</b>
+  </div>
+
+  <div class="stat">
+    SERİ
+    <b id="serial">21+</b>
+  </div>
+
+  <div class="stat">
+    ÇİFT
+    <b id="pairs">5+</b>
+  </div>
+
+</div>
+
+
+<div class="table">
+
+<div class="table-logo">
+  21 OKEY
+</div>
+
+
+<div class="seatrow">
+
+  <div class="seat" id="p2">
+    Oyuncu 2 (Bot)<br>
+    Skor: <b>0</b>
+  </div>
+
+  <div class="seat" id="p3">
+    Oyuncu 3 (Bot)<br>
+    Skor: <b>0</b>
+  </div>
+
+</div>
+
+
+<div class="center">
+
+  <div>
+
+    <div class="zone-title">
+      DESTE
+    </div>
+
+    <button
+      class="deck"
+      onclick="drawFromDeck()">
+      ★
+    </button>
+
+  </div>
+
+
+  <div>
+
+    <div class="center-logo">
+      21 OKEY
+    </div>
+
+    <div class="turn">
+      Sıra:
+      <b id="turnLabel">
+        Sen
+      </b>
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div class="zone-title">
+      ATILAN
+    </div>
+
+    <div
+      class="discard"
+      id="discardPile">
+      —
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="seat" id="p4">
+  Oyuncu 4 (Bot)<br>
+  Skor: <b>0</b>
+</div>
+
+
+<div class="hand-area">
+
+  <div class="player-name">
+    OYUNCU 1
+  </div>
+
+  <div class="rack">
+
+    <div class="rack-depth"></div>
+
+    <div class="rack-center"></div>
+
+    <div class="rack-center-shadow"></div>
+
+    <div class="rack-name">
+      OYUNCU 1
+    </div>
+
+    <!-- ÜST RAF -->
+    <div
+      class="rack-row top-row"
+      id="topRack">
+    </div>
+
+    <!-- ALT RAF -->
+    <div
+      class="rack-row bottom-row"
+      id="bottomRack">
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="side-options">
+
+  <button
+    class="option active"
+    id="seriBtn"
+    onclick="selectMode('seri')">
+    SERİ
+  </button>
+
+  <button
+    class="option"
+    id="ciftBtn"
+    onclick="selectMode('cift')">
+    ÇİFT
+  </button>
+
+</div>
+
+
+<div
+  class="msg"
+  id="msg">
+  15 taşla başladın. Taşlarına dokunabilir veya sürükleyebilirsin.
+</div>
+
+</div>
+
+
+<div
+  class="score"
+  id="score">
+</div>
+
+
+<div class="rules">
+
+  <b style="color:#f5d66a">
+    21 OKEY PREMIUM TEST
+  </b>
+
+  <div style="margin-top:4px">
+    11 el • Seri 21+ • Çift 5+ • Katlamalı
+  </div>
+
+  <div
+    class="log"
+    id="log">
+  </div>
+
+</div>
+
+</div>
+
+
+<div
+  class="modal"
+  id="modal">
+
+  <div class="box">
+
+    <h2>
+      21 Okey
+    </h2>
+
+    <ul>
+
+      <li>
+        İlk oyuncu 15 taşla başlar.
+      </li>
+
+      <li>
+        Seri açılışı minimum 21.
+      </li>
+
+      <li>
+        Çift açılışı minimum 5 çift.
+      </li>
+
+      <li>
+        Açılışlar katlamalıdır.
+      </li>
+
+      <li>
+        12-13-1 serisi geçerlidir.
+      </li>
+
+      <li>
+        İşlek taş atmak cezalıdır.
+      </li>
+
+      <li>
+        Eli bitiren oyuncu -100 alır.
+      </li>
+
+      <li>
+        11 el sonunda en düşük skor kazanır.
+      </li>
+
+    </ul>
+
+    <button
+      class="btn"
+      onclick="hideRules()">
+      Kapat
+    </button>
+
+  </div>
+
+</div>
+
 
 <script>
-const C=[['red','♥'],['blue','♦'],['black','♣'],['green','♠']];
-let deck=[],hands=[[],[],[],[]],opened=[[],[],[],[]],discard=null,selected=new Set();
-let scores=[0,0,0,0],round=1,turn=0,firstPlayer=0,firstTurn=true;
-let serialLimit=21,pairLimit=5,timer=25,timerId=null,roundOver=false;
+
+const C=[
+  ['red','♥'],
+  ['blue','♦'],
+  ['black','♣'],
+  ['green','♠']
+];
+
+let deck=[];
+let hands=[[],[],[],[]];
+let opened=[[],[],[],[]];
+
+let discard=null;
+
+let selected=new Set();
+
+let scores=[0,0,0,0];
+
+let round=1;
+let turn=0;
+let firstPlayer=0;
+let firstTurn=true;
+
+let serialLimit=21;
+let pairLimit=5;
+
+let timer=25;
+let timerId=null;
+
+let roundOver=false;
+
+let selectedMode='seri';
+
 const $=id=>document.getElementById(id);
-function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function makeDeck(){deck=[];for(const [c,s] of C)for(let n=1;n<=13;n++)for(let k=0;k<2;k++)deck.push({n,c,s,id:Math.random()});for(let k=0;k<2;k++)deck.push({joker:true,n:0,c:'joker',s:'★',id:Math.random()});shuffle(deck)}
-function take(){return deck.pop()}
-function text(t){return t.joker?'★':t.n+t.s}
-function log(s){let d=document.createElement('div');d.textContent=s;$('log').prepend(d)}
-function say(s){$('msg').textContent=s}
-function value(t){return t.joker?0:t.n}
-function sortHand(h){h.sort((a,b)=>(a.joker?99:a.n)-(b.joker?99:b.n)||a.c.localeCompare(b.c))}
+
+
+/* =========================
+   DESTE
+========================= */
+
+function shuffle(a){
+
+  for(
+    let i=a.length-1;
+    i>0;
+    i--
+  ){
+
+    let j=Math.floor(
+      Math.random()*(i+1)
+    );
+
+    [a[i],a[j]]=
+    [a[j],a[i]];
+
+  }
+
+  return a;
+}
+
+
+function makeDeck(){
+
+  deck=[];
+
+  for(
+    const [c,s] of C
+  ){
+
+    for(
+      let n=1;
+      n<=13;
+      n++
+    ){
+
+      for(
+        let k=0;
+        k<2;
+        k++
+      ){
+
+        deck.push({
+          n,
+          c,
+          s,
+          id:Math.random()
+        });
+
+      }
+
+    }
+
+  }
+
+  for(
+    let k=0;
+    k<2;
+    k++
+  ){
+
+    deck.push({
+      joker:true,
+      n:0,
+      c:'joker',
+      s:'★',
+      id:Math.random()
+    });
+
+  }
+
+  shuffle(deck);
+
+}
+
+
+function take(){
+  return deck.pop();
+}
+
+
+function text(t){
+
+  return t.joker
+    ? '★'
+    : t.n+t.s;
+
+}
+
+
+function value(t){
+
+  return t.joker
+    ? 0
+    : t.n;
+
+}
+
+
+function sortHand(h){
+
+  h.sort(
+    (a,b)=>
+      (a.joker?99:a.n)-
+      (b.joker?99:b.n)
+      ||
+      a.c.localeCompare(b.c)
+  );
+
+}
+
+
+/* =========================
+   LOG
+========================= */
+
+function log(s){
+
+  let d=
+    document.createElement('div');
+
+  d.textContent=s;
+
+  $('log').prepend(d);
+
+}
+
+
+function say(s){
+
+  $('msg').textContent=s;
+
+}
+
+
+/* =========================
+   TAŞ HTML
+========================= */
+
+function tileHTML(t){
+
+  return `
+    <button
+      class="tile ${t.c}"
+      disabled>
+      ${text(t)}
+    </button>
+  `;
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
 function render(){
-  $('round').textContent=round+'/11';$('timer').textContent=timer;$('serial').textContent=serialLimit+'+';$('pairs').textContent=pairLimit+'+';
-  $('turnLabel').textContent=turn===0?'Sen':'Bot '+(turn+1);$('count').textContent=hands[0].length+' taş';
-  $('discardPile').innerHTML=discard?tileHTML(discard):'—';
-  let h=$('hand');h.innerHTML='';
-  hands[0].forEach((t,i)=>{let b=document.createElement('button');b.className='tile '+t.c+(selected.has(i)?' sel':'');b.innerHTML=text(t);b.onclick=()=>{if(turn!==0||roundOver)return;selected.has(i)?selected.delete(i):selected.add(i);render()};h.appendChild(b)});
-  for(let i=1;i<4;i++)$(('p'+(i+1))).innerHTML=`Oyuncu ${i+1} (Bot)<br>Skor: <b>${scores[i]}</b><br><span class="sub">${hands[i].length} taş • ${opened[i].length} açılış</span>`;
-  $('p2').classList.toggle('active',turn===1);$('p3').classList.toggle('active',turn===2);$('p4').classList.toggle('active',turn===3);
-  $('score').innerHTML='<div class="scoreline"><b>Oyuncu</b><b>Toplam</b><b>Durum</b></div>'+scores.map((s,i)=>`<div class="scoreline"><span>Oyuncu ${i+1}</span><b>${s}</b><span>${i===0?'Sen':'Bot'}</span></div>`).join('');
+
+  $('round').textContent=
+    round+'/11';
+
+  $('timer').textContent=
+    timer;
+
+  $('serial').textContent=
+    serialLimit+'+';
+
+  $('pairs').textContent=
+    pairLimit+'+';
+
+  $('turnLabel').textContent=
+    turn===0
+      ? 'Sen'
+      : 'Bot '+(turn+1);
+
+
+  $('discardPile').innerHTML=
+    discard
+      ? tileHTML(discard)
+      : '—';
+
+
+  $('topRack').innerHTML='';
+  $('bottomRack').innerHTML='';
+
+
+  hands[0].forEach(
+    (t,i)=>{
+
+      let b=
+        document.createElement('button');
+
+      b.className=
+        'tile '+
+        t.c+
+        (
+          selected.has(i)
+            ? ' selected'
+            : ''
+        );
+
+      b.textContent=
+        text(t);
+
+      b.dataset.index=i;
+
+      /*
+        Tek dokunuş:
+        taşı seç / seçimi kaldır
+      */
+
+      b.addEventListener(
+        'click',
+        e=>{
+
+          if(
+            b.dataset.dragged==='1'
+          ){
+
+            b.dataset.dragged='0';
+            return;
+
+          }
+
+          if(
+            turn!==0 ||
+            roundOver
+          )
+            return;
+
+          if(
+            selected.has(i)
+          )
+            selected.delete(i);
+          else
+            selected.add(i);
+
+          render();
+
+        }
+      );
+
+
+      /*
+        Çift dokunuş:
+        taş at
+      */
+
+      let lastTap=0;
+
+      b.addEventListener(
+        'pointerup',
+        e=>{
+
+          let now=Date.now();
+
+          if(
+            now-lastTap<320
+          ){
+
+            if(
+              turn===0 &&
+              !roundOver
+            ){
+
+              discardTile(i);
+
+            }
+
+          }
+
+          lastTap=now;
+
+        }
+      );
+
+
+      /*
+        GERÇEK SÜRÜKLEME
+      */
+
+      let startX=0;
+      let startY=0;
+      let dragging=false;
+
+      b.addEventListener(
+        'pointerdown',
+        e=>{
+
+          if(
+            turn!==0 ||
+            roundOver
+          )
+            return;
+
+          startX=e.clientX;
+          startY=e.clientY;
+
+          dragging=false;
+
+          b.setPointerCapture(
+            e.pointerId
+          );
+
+        }
+      );
+
+
+      b.addEventListener(
+        'pointermove',
+        e=>{
+
+          if(
+            Math.abs(
+              e.clientX-startX
+            )>8 ||
+            Math.abs(
+              e.clientY-startY
+            )>8
+          ){
+
+            dragging=true;
+
+          }
+
+          if(!dragging)
+            return;
+
+          /*
+            Sürükleme sırasında
+            taşı görsel olarak kaldır
+          */
+
+          b.style.transform=
+            `translateY(-20px) scale(1.08)`;
+
+        }
+      );
+
+
+      b.addEventListener(
+        'pointerup',
+        e=>{
+
+          if(!dragging)
+            return;
+
+          b.dataset.dragged='1';
+
+          b.style.transform='';
+
+          /*
+            Bırakılan noktaya göre
+            taşın sırasını değiştir
+          */
+
+          let x=e.clientX;
+
+          let all=
+            [...document.querySelectorAll(
+              '.rack-row .tile'
+            )];
+
+          let closest=null;
+          let distance=Infinity;
+
+          all.forEach(
+            other=>{
+
+              if(other===b)
+                return;
+
+              let r=
+                other.getBoundingClientRect();
+
+              let d=
+                Math.abs(
+                  x-(r.left+r.width/2)
+                );
+
+              if(d<distance){
+
+                distance=d;
+                closest=other;
+
+              }
+
+            }
+          );
+
+          if(
+            closest
+          ){
+
+            let from=
+              Number(
+                b.dataset.index
+              );
+
+            let to=
+              Number(
+                closest.dataset.index
+              );
+
+            if(
+              !Number.isNaN(from) &&
+              !Number.isNaN(to)
+            ){
+
+              moveTile(
+                from,
+                to
+              );
+
+            }
+
+          }
+
+        }
+      );
+
+
+      /*
+        İlk taşlar üst rafa,
+        devamı alt rafa.
+        Oyuncu bunları sürükleyebilir.
+      */
+
+      if(i<8)
+        $('topRack').appendChild(b);
+      else
+        $('bottomRack').appendChild(b);
+
+    }
+  );
+
+
+  for(
+    let i=1;
+    i<4;
+    i++
+  ){
+
+    $('p'+(i+1)).innerHTML=
+      `
+      Oyuncu ${i+1} (Bot)<br>
+      Skor: <b>${scores[i]}</b><br>
+      <span class="sub">
+        ${hands[i].length} taş
+      </span>
+      `;
+
+  }
+
+
+  $('p2').classList.toggle(
+    'active',
+    turn===1
+  );
+
+  $('p3').classList.toggle(
+    'active',
+    turn===2
+  );
+
+  $('p4').classList.toggle(
+    'active',
+    turn===3
+  );
+
+
+  $('score').innerHTML=
+    `
+    <div class="scoreline">
+      <b>Oyuncu</b>
+      <b>Skor</b>
+      <b>Durum</b>
+    </div>
+
+    ${
+      scores.map(
+        (s,i)=>
+        `
+        <div class="scoreline">
+          <span>Oyuncu ${i+1}</span>
+          <b>${s}</b>
+          <span>
+            ${i===0?'Sen':'Bot'}
+          </span>
+        </div>
+        `
+      ).join('')
+    }
+    `;
+
 }
-function tileHTML(t){return `<button class="tile ${t.c}" disabled>${text(t)}</button>`}
-function stop(){clearInterval(timerId);timerId=null}
-function clock(){stop();timer=25;render();timerId=setInterval(()=>{timer--;render();if(timer<=0){stop();timeout()}},1000)}
-function timeout(){if(roundOver||turn!==0)return;say('25 saniye doldu. Sistem otomatik hamle yaptı.');if(firstTurn){autoDiscard()}else{let d=take();if(d)hands[0].push(d);autoDiscard()} }
-function autoDiscard(){sortHand(hands[0]);discard=hands[0].pop();firstTurn=false;selected.clear();log('⏱️ Süre doldu: otomatik taş atıldı.');render();if(checkEnd())return;nextTurn()}
-function isPair(arr){if(arr.length<2||arr.length%2)return false;let non=arr.filter(t=>!t.joker);if(non.length!==arr.length)return false;let m={};non.forEach(t=>m[t.n]=(m[t.n]||0)+1);return Object.values(m).every(v=>v===2)}
-function runInfo(arr){let a=arr.filter(t=>!t.joker).slice().sort((x,y)=>x.n-y.n);if(a.length<3)return null;let nums=a.map(t=>t.n);let uniq=[...new Set(nums)];if(uniq.length!==nums.length)return null;if(nums.join(',')==='1,12,13')return {valid:true,score:13};let ok=nums.every((n,i)=>i===0||n===nums[i-1]+1);return ok?{valid:true,score:a.length===3?a[1].n:(a[Math.floor(a.length/2)]?.n||0)+a.slice(3).reduce((s,t)=>s+t.n/3,0)}:null}
-function validOpen(arr){if(isPair(arr))return {type:'pair',score:arr.length/2};let r=runInfo(arr);return r?{type:'run',score:r.score}:null}
+
+
+/* =========================
+   TAŞ YER DEĞİŞTİRME
+========================= */
+
+function moveTile(from,to){
+
+  if(
+    from===to
+  )
+    return;
+
+  let item=
+    hands[0].splice(
+      from,
+      1
+    )[0];
+
+  hands[0].splice(
+    to,
+    0,
+    item
+  );
+
+  selected.clear();
+
+  render();
+
+}
+
+
+/* =========================
+   TAŞ ATMA
+========================= */
+
+function discardTile(i){
+
+  if(
+    turn!==0 ||
+    roundOver
+  )
+    return;
+
+  let t=
+    hands[0][i];
+
+  if(
+    canBePlayedOnOwnMeld(t)
+  ){
+
+    scores[0]+=100;
+
+    log(
+      '🚨 İşlek taş attın: +100'
+    );
+
+    say(
+      'İŞLEK TAŞ! +100 ceza.'
+    );
+
+  }
+
+  discard=
+    hands[0].splice(
+      i,
+      1
+    )[0];
+
+  selected.clear();
+
+  firstTurn=false;
+
+  render();
+
+  if(
+    checkEnd()
+  )
+    return;
+
+  nextTurn();
+
+}
+
+
+/* =========================
+   DESTE
+========================= */
+
+function drawFromDeck(){
+
+  if(
+    roundOver ||
+    turn!==0
+  )
+    return;
+
+  if(firstTurn){
+
+    say(
+      'İlk turda taş çekemezsin.'
+    );
+
+    return;
+
+  }
+
+  let t=take();
+
+  if(!t){
+
+    say(
+      'Deste bitti.'
+    );
+
+    return;
+
+  }
+
+  hands[0].push(t);
+
+  selected.clear();
+
+  say(
+    'Taş çektin. Taşını ıstakada istediğin yere sürükleyebilirsin.'
+  );
+
+  log(
+    'Deste çektin.'
+  );
+
+  render();
+
+  clock();
+
+}
+
+
+/* =========================
+   ATILAN TAŞI AL
+========================= */
+
+$('discardPile').addEventListener(
+  'click',
+  takeDiscard
+);
+
+
+function takeDiscard(){
+
+  if(
+    roundOver ||
+    turn!==0
+  )
+    return;
+
+  if(firstTurn){
+
+    say(
+      'İlk turda atılan taşı alamazsın.'
+    );
+
+    return;
+
+  }
+
+  if(!discard){
+
+    say(
+      'Alınacak taş yok.'
+    );
+
+    return;
+
+  }
+
+  hands[0].push(discard);
+
+  discard=null;
+
+  sortHand(
+    hands[0]
+  );
+
+  selected.clear();
+
+  log(
+    'Atılan taşı aldın.'
+  );
+
+  say(
+    'Atılan taş ıstakana geldi.'
+  );
+
+  render();
+
+  clock();
+
+}
+
+
+/* =========================
+   SERİ / ÇİFT
+========================= */
+
+function selectMode(mode){
+
+  selectedMode=mode;
+
+  $('seriBtn')
+    .classList.toggle(
+      'active',
+      mode==='seri'
+    );
+
+  $('ciftBtn')
+    .classList.toggle(
+      'active',
+      mode==='cift'
+    );
+
+
+  if(
+    selected.size<3
+  ){
+
+    say(
+      mode==='seri'
+        ? 'Seri modu seçildi.'
+        : 'Çift modu seçildi.'
+    );
+
+    return;
+
+  }
+
+  openSelected();
+
+}
+
+
+/* =========================
+   PER KONTROLÜ
+========================= */
+
+function isPair(arr){
+
+  if(
+    arr.length<2 ||
+    arr.length%2
+  )
+    return false;
+
+  let non=
+    arr.filter(
+      t=>!t.joker
+    );
+
+  if(
+    non.length!==arr.length
+  )
+    return false;
+
+  let m={};
+
+  non.forEach(
+    t=>{
+      m[t.n]=
+        (m[t.n]||0)+1;
+    }
+  );
+
+  return Object.values(m)
+    .every(
+      v=>v===2
+    );
+
+}
+
+
+function runInfo(arr){
+
+  let a=
+    arr
+      .filter(
+        t=>!t.joker
+      )
+      .slice()
+      .sort(
+        (x,y)=>x.n-y.n
+      );
+
+  if(
+    a.length<3
+  )
+    return null;
+
+  let nums=
+    a.map(
+      t=>t.n
+    );
+
+  let uniq=
+    [...new Set(nums)];
+
+  if(
+    uniq.length!==nums.length
+  )
+    return null;
+
+  if(
+    nums.join(',')==='1,12,13'
+  ){
+
+    return {
+      valid:true,
+      score:13
+    };
+
+  }
+
+  let ok=
+    nums.every(
+      (n,i)=>
+        i===0 ||
+        n===nums[i-1]+1
+    );
+
+  if(!ok)
+    return null;
+
+  return {
+    valid:true,
+    score:
+      a.length===3
+        ? a[1].n
+        : a[
+            Math.floor(
+              a.length/2
+            )
+          ].n
+  };
+
+}
+
+
+function validOpen(arr){
+
+  if(
+    isPair(arr)
+  ){
+
+    return {
+      type:'pair',
+      score:arr.length/2
+    };
+
+  }
+
+  let r=
+    runInfo(arr);
+
+  return r
+    ? {
+        type:'run',
+        score:r.score
+      }
+    : null;
+
+}
+
+
+/* =========================
+   AÇILIŞ
+========================= */
+
 function openSelected(){
- if(turn!==0||roundOver)return;let idx=[...selected].sort((a,b)=>a-b),arr=idx.map(i=>hands[0][i]);let v=validOpen(arr);
- if(!v){say('Seçtiklerin geçerli bir seri veya çift grubu değil.');return}
- if(v.type==='pair'){if(v.score<pairLimit){say(`Katlamalı çift: en az ${pairLimit} çift açmalısın.`);return}pairLimit=v.score+1}
- else{if(v.score<serialLimit){say(`Katlamalı seri: en az ${serialLimit} değerinde açmalısın.`);return}serialLimit=Math.floor(v.score)+1}
- opened[0].push(arr);hands[0]=hands[0].filter((_,i)=>!selected.has(i));selected.clear();firstTurn=false;log(`Sen ${v.type==='pair'?v.score+' çift':'seri değeri '+v.score} açtın.`);say('Açılış başarılı. Şimdi taş atabilir veya başka perine işleyebilirsin.');render();clock()
+
+  if(
+    turn!==0 ||
+    roundOver
+  )
+    return;
+
+  let idx=
+    [...selected]
+      .sort(
+        (a,b)=>a-b
+      );
+
+  let arr=
+    idx.map(
+      i=>hands[0][i]
+    );
+
+  let v=
+    validOpen(arr);
+
+  if(!v){
+
+    say(
+      'Seçtiğin taşlar geçerli bir per değil.'
+    );
+
+    return;
+
+  }
+
+  if(
+    v.type==='pair'
+  ){
+
+    if(
+      v.score<pairLimit
+    ){
+
+      say(
+        `En az ${pairLimit} çift açmalısın.`
+      );
+
+      return;
+
+    }
+
+    pairLimit=
+      v.score+1;
+
+  }else{
+
+    if(
+      v.score<serialLimit
+    ){
+
+      say(
+        `En az ${serialLimit} değerinde seri açmalısın.`
+      );
+
+      return;
+
+    }
+
+    serialLimit=
+      Math.floor(
+        v.score
+      )+1;
+
+  }
+
+  opened[0].push(arr);
+
+  hands[0]=
+    hands[0].filter(
+      (_,i)=>
+        !selected.has(i)
+    );
+
+  selected.clear();
+
+  firstTurn=false;
+
+  log(
+    `Sen ${v.type==='pair'
+      ? v.score+' çift'
+      : 'seri'
+    } açtın.`
+  );
+
+  say(
+    'Açılış başarılı.'
+  );
+
+  render();
+
+  clock();
+
 }
-function drawFromDeck(){if(roundOver||turn!==0)return;if(firstTurn){say('İlk turda taş çekemezsin.');return}let t=take();if(!t){say('Deste bitti.');return}hands[0].push(t);selected.clear();sortHand(hands[0]);log('Deste çektin.');say('Taş çektin. Şimdi oynayabilirsin.');render();clock()}
-function takeDiscard(){if(roundOver||turn!==0)return;if(firstTurn){say('İlk oyuncu ilk turda atılan taşı alamaz.');return}if(!discard){say('Atılan taş yok.');return}hands[0].push(discard);log('Atılan taşı aldın: '+text(discard));discard=null;sortHand(hands[0]);render();clock()}
-function discardSelected(){
- if(roundOver||turn!==0||selected.size!==1){say('Atmak için 1 taş seçmelisin.');return}
- let i=[...selected][0],t=hands[0][i];
- // Basit ama gerçek test kuralı: açık perlere eklenebilen taş işlek sayılır.
- if(canBePlayedOnOwnMeld(t)){scores[0]+=100;log('🚨 İşlek taş attın: +100.');say('İŞLEK TAŞ! +100 ceza.');}
- discard=t;hands[0].splice(i,1);selected.clear();firstTurn=false;render();if(checkEnd())return;nextTurn()
+
+
+/* =========================
+   İŞLEK
+========================= */
+
+function canBePlayedOnOwnMeld(t){
+
+  return opened[0]
+    .some(
+      m=>
+        m.length>=3 &&
+        runInfo(
+          [...m,t]
+        )
+    );
+
 }
-function canBePlayedOnOwnMeld(t){return opened[0].some(m=>m.length>=3&&runInfo([...m,t]))}
-function remainingScore(i){return hands[i].reduce((s,t)=>s+value(t),0)}
+
+
+/* =========================
+   SÜRE
+========================= */
+
+function stop(){
+
+  clearInterval(timerId);
+
+  timerId=null;
+
+}
+
+
+function clock(){
+
+  stop();
+
+  timer=25;
+
+  render();
+
+  timerId=
+    setInterval(
+      ()=>{
+
+        timer--;
+
+        render();
+
+        if(
+          timer<=0
+        ){
+
+          stop();
+
+          timeout();
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+function timeout(){
+
+  if(
+    roundOver ||
+    turn!==0
+  )
+    return;
+
+  say(
+    'Süre doldu.'
+  );
+
+  if(firstTurn){
+
+    discardTile(
+      hands[0].length-1
+    );
+
+  }else{
+
+    let d=take();
+
+    if(d)
+      hands[0].push(d);
+
+    discardTile(
+      hands[0].length-1
+    );
+
+  }
+
+}
+
+
+/* =========================
+   BİTİŞ
+========================= */
+
+function remainingScore(i){
+
+  return hands[i]
+    .reduce(
+      (s,t)=>
+        s+value(t),
+      0
+    );
+
+}
+
+
 function finish(winner){
- roundOver=true;stop();
- for(let i=0;i<4;i++)if(i!==winner)scores[i]+=remainingScore(i);
- scores[winner]-=100;
- log(`🏆 Oyuncu ${winner+1} eli bitirdi: -100. Diğer ellerin kalan taşları yazıldı.`);
- say(`El bitti! ${winner===0?'Sen': 'Bot '+(winner+1)} kazandı. Bir sonraki ele geçebilirsin.`);
- render();
- setTimeout(()=>nextRound(),900);
+
+  roundOver=true;
+
+  stop();
+
+  for(
+    let i=0;
+    i<4;
+    i++
+  ){
+
+    if(
+      i!==winner
+    ){
+
+      scores[i]+=
+        remainingScore(i);
+
+    }
+
+  }
+
+  scores[winner]-=100;
+
+  log(
+    `🏆 Oyuncu ${winner+1} eli bitirdi.`
+  );
+
+  say(
+    `🏆 ${
+      winner===0
+        ? 'Sen'
+        : 'Bot '+(winner+1)
+    } eli kazandı!`
+  );
+
+  render();
+
+  setTimeout(
+    nextRound,
+    1400
+  );
+
 }
-function checkEnd(){if(hands[0].length===0){finish(0);return true}return false}
+
+
+function checkEnd(){
+
+  if(
+    hands[0].length===0
+  ){
+
+    finish(0);
+
+    return true;
+
+  }
+
+  return false;
+
+}
+
+
+/* =========================
+   TUR
+========================= */
+
 function nextTurn(){
- if(roundOver)return;
- turn=(turn+1)%4;firstTurn=false;render();
- if(turn===0){say('Sıra sende. Taş çek veya atılanı al, sonra oyna.');clock()}else{setTimeout(botTurn,550)}
+
+  if(roundOver)
+    return;
+
+  turn=
+    (turn+1)%4;
+
+  firstTurn=false;
+
+  render();
+
+  if(
+    turn===0
+  ){
+
+    say(
+      'Sıra sende.'
+    );
+
+    clock();
+
+  }else{
+
+    setTimeout(
+      botTurn,
+      650
+    );
+
+  }
+
 }
+
+
+/* =========================
+   BOT
+========================= */
+
 function botTurn(){
- if(roundOver)return;
- if(hands[turn].length<14){let d=take();if(d)hands[turn].push(d)}
- // Bot: önce kolay çift/seri açmayı dene; sonra rastgele taş at.
- botOpen();
- sortHand(hands[turn]);
- let idx=Math.floor(Math.random()*hands[turn].length);discard=hands[turn].splice(idx,1)[0];
- log(`Bot ${turn+1} taş oynadı.`);render();
- if(hands[turn].length===0){finish(turn);return}
- nextTurn()
+
+  if(roundOver)
+    return;
+
+  if(
+    hands[turn].length<14
+  ){
+
+    let d=take();
+
+    if(d)
+      hands[turn].push(d);
+
+  }
+
+  botOpen();
+
+  sortHand(
+    hands[turn]
+  );
+
+  if(
+    hands[turn].length
+  ){
+
+    let idx=
+      Math.floor(
+        Math.random()*
+        hands[turn].length
+      );
+
+    discard=
+      hands[turn]
+        .splice(
+          idx,
+          1
+        )[0];
+
+  }
+
+  log(
+    `Bot ${turn+1} taş oynadı.`
+  );
+
+  render();
+
+  if(
+    hands[turn].length===0
+  ){
+
+    finish(turn);
+
+    return;
+
+  }
+
+  nextTurn();
+
 }
+
+
 function botOpen(){
- let h=hands[turn];let map={};h.forEach((t,i)=>{if(!t.joker)(map[t.n]??=[]).push(i)});
- let pairIdx=Object.values(map).find(a=>a.length>=2);if(pairIdx&&pairIdx.length>=pairLimit*2){let arr=pairIdx.slice(0,pairLimit*2).map(i=>h[i]);let v=validOpen(arr);if(v&&v.score>=pairLimit){opened[turn].push(arr);let set=new Set(pairIdx.slice(0,pairLimit*2));hands[turn]=h.filter((_,i)=>!set.has(i));pairLimit=v.score+1;return}}
- // Try 3-run
- for(let i=0;i<h.length;i++)for(let j=i+1;j<h.length;j++)for(let k=j+1;k<h.length;k++){let arr=[h[i],h[j],h[k]];let v=validOpen(arr);if(v&&v.type==='run'&&v.score>=serialLimit){opened[turn].push(arr);let set=new Set([i,j,k]);hands[turn]=h.filter((_,x)=>!set.has(x));serialLimit=Math.floor(v.score)+1;return}}
+
+  let h=
+    hands[turn];
+
+  let map={};
+
+  h.forEach(
+    (t,i)=>{
+
+      if(!t.joker){
+
+        if(!map[t.n])
+          map[t.n]=[];
+
+        map[t.n].push(i);
+
+      }
+
+    }
+  );
+
+  let pairs=
+    Object.values(map)
+      .find(
+        a=>
+          a.length>=pairLimit*2
+      );
+
+  if(pairs){
+
+    let ids=
+      pairs.slice(
+        0,
+        pairLimit*2
+      );
+
+    let arr=
+      ids.map(
+        i=>h[i]
+      );
+
+    let v=
+      validOpen(arr);
+
+    if(
+      v &&
+      v.score>=pairLimit
+    ){
+
+      opened[turn].push(arr);
+
+      let set=
+        new Set(ids);
+
+      hands[turn]=
+        h.filter(
+          (_,i)=>
+            !set.has(i)
+        );
+
+      pairLimit=
+        v.score+1;
+
+      return;
+
+    }
+
+  }
+
+
+  for(
+    let i=0;
+    i<h.length;
+    i++
+  ){
+
+    for(
+      let j=i+1;
+      j<h.length;
+      j++
+    ){
+
+      for(
+        let k=j+1;
+        k<h.length;
+        k++
+      ){
+
+        let arr=[
+          h[i],
+          h[j],
+          h[k]
+        ];
+
+        let v=
+          validOpen(arr);
+
+        if(
+          v &&
+          v.type==='run' &&
+          v.score>=serialLimit
+        ){
+
+          opened[turn].push(arr);
+
+          let set=
+            new Set([
+              i,j,k
+            ]);
+
+          hands[turn]=
+            h.filter(
+              (_,x)=>
+                !set.has(x)
+            );
+
+          serialLimit=
+            Math.floor(
+              v.score
+            )+1;
+
+          return;
+
+        }
+
+      }
+
+    }
+
+  }
+
 }
+
+
+/* =========================
+   YENİ EL
+========================= */
+
 function nextRound(){
- if(round>=11){let min=Math.min(...scores),w=scores.map((s,i)=>s===min?i:null).filter(x=>x!==null);roundOver=true;stop();say('🏆 11 el tamamlandı! Kazanan: '+w.map(i=>i===0?'Sen':'Bot '+(i+1)).join(', '));log('🏆 MAÇ BİTTİ. En düşük toplam kazandı.');return}
- round++;firstPlayer=(firstPlayer+1)%4;turn=firstPlayer;firstTurn=true;roundOver=false;serialLimit=21;pairLimit=5;discard=null;selected.clear();opened=[[],[],[],[]];
- makeDeck();hands=[[],[],[],[]];for(let i=0;i<4;i++){let n=i===turn?15:14;for(let k=0;k<n;k++)hands[i].push(take());sortHand(hands[i])}
- log(`El ${round}/11 başladı. İlk oyuncu: ${turn===0?'Sen':'Bot '+(turn+1)}.`);
- say(turn===0?'İlk oyuncu sensin: 15 taş, ilk turda çekme yok.':'İlk oyuncu başka oyuncu.');render();clock();if(turn!==0)setTimeout(botTurn,700)
+
+  if(
+    round>=11
+  ){
+
+    let min=
+      Math.min(...scores);
+
+    let winners=
+      scores
+        .map(
+          (s,i)=>
+            s===min
+              ? i
+              : null
+        )
+        .filter(
+          x=>x!==null
+        );
+
+    roundOver=true;
+
+    stop();
+
+    say(
+      '🏆 11 el tamamlandı! '+
+      winners
+        .map(
+          i=>
+            i===0
+              ? 'Sen'
+              : 'Bot '+(i+1)
+        )
+        .join(', ')+
+      ' kazandı.'
+    );
+
+    log(
+      '🏆 MAÇ BİTTİ.'
+    );
+
+    return;
+
+  }
+
+  round++;
+
+  firstPlayer=
+    (firstPlayer+1)%4;
+
+  turn=
+    firstPlayer;
+
+  firstTurn=true;
+
+  roundOver=false;
+
+  serialLimit=21;
+  pairLimit=5;
+
+  discard=null;
+
+  selected.clear();
+
+  opened=[
+    [],
+    [],
+    [],
+    []
+  ];
+
+  makeDeck();
+
+  hands=[
+    [],
+    [],
+    [],
+    []
+  ];
+
+  for(
+    let i=0;
+    i<4;
+    i++
+  ){
+
+    let n=
+      i===turn
+        ? 15
+        : 14;
+
+    for(
+      let k=0;
+      k<n;
+      k++
+    ){
+
+      hands[i].push(
+        take()
+      );
+
+    }
+
+    sortHand(
+      hands[i]
+    );
+
+  }
+
+  log(
+    `El ${round}/11 başladı.`
+  );
+
+  render();
+
+  if(
+    turn===0
+  ){
+
+    say(
+      'İlk oyuncu sensin. 15 taşla başladın.'
+    );
+
+    clock();
+
+  }else{
+
+    say(
+      'İlk oyuncu bot.'
+    );
+
+    setTimeout(
+      botTurn,
+      800
+    );
+
+  }
+
 }
-function start(){makeDeck();hands=[[],[],[],[]];scores=[0,0,0,0];round=1;firstPlayer=0;turn=0;firstTurn=true;roundOver=false;serialLimit=21;pairLimit=5;discard=null;selected.clear();for(let i=0;i<4;i++){let n=i===0?15:14;for(let k=0;k<n;k++)hands[i].push(take());sortHand(hands[i])}log('El 1 başladı. İlk oyuncu sensin.');say('15 taşla başladın. İlk turda çekmeden aç veya bir taş at.');render();clock()}
-function showRules(){$('modal').classList.add('show')}function hideRules(){$('modal').classList.remove('show')}
+
+
+/* =========================
+   BAŞLAT
+========================= */
+
+function start(){
+
+  makeDeck();
+
+  hands=[
+    [],
+    [],
+    [],
+    []
+  ];
+
+  opened=[
+    [],
+    [],
+    [],
+    []
+  ];
+
+  scores=[
+    0,
+    0,
+    0,
+    0
+  ];
+
+  round=1;
+  firstPlayer=0;
+  turn=0;
+
+  firstTurn=true;
+  roundOver=false;
+
+  serialLimit=21;
+  pairLimit=5;
+
+  discard=null;
+
+  selected.clear();
+
+  for(
+    let i=0;
+    i<4;
+    i++
+  ){
+
+    let n=
+      i===0
+        ? 15
+        : 14;
+
+    for(
+      let k=0;
+      k<n;
+      k++
+    ){
+
+      hands[i].push(
+        take()
+      );
+
+    }
+
+    sortHand(
+      hands[i]
+    );
+
+  }
+
+  log(
+    '🀄 21 Okey başladı.'
+  );
+
+  say(
+    '15 taşla başladın. Taşlarına dokun veya sürükle.'
+  );
+
+  render();
+
+  clock();
+
+}
+
+
+/* =========================
+   KURALLAR
+========================= */
+
+function showRules(){
+
+  $('modal')
+    .classList
+    .add('show');
+
+}
+
+function hideRules(){
+
+  $('modal')
+    .classList
+    .remove('show');
+
+}
+
+
+/* =========================
+   BAŞLAT
+========================= */
+
 start();
+
 </script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{});}</script>
-</body></html>
+
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker
+    .register("./sw.js")
+    .catch(()=>{});
+}
+</script>
+
+</body>
+</html>
