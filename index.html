@@ -11,713 +11,784 @@
 
 <style>
 :root{
-  --gold:#d9aa35;
-  --gold2:#ffe08a;
-  --red:#ef3b42;
-  --blue:#35a9ff;
-  --green:#35d276;
+ --gold:#d7a62e;
+ --gold2:#ffe49a;
+ --gold3:#8c6415;
+ --black:#050505;
+ --black2:#111;
+ --black3:#1c1c1c;
+ --felt:#090909;
+ --red:#ff3b45;
+ --blue:#39a9ff;
+ --green:#36d477;
+ --white:#f5f5f5;
 }
 
 *{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  min-height:100%;
-  background:#000;
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+ margin:0;
+ min-height:100%;
+ background:#000;
+ color:#fff;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 body{
-  background:
-    radial-gradient(circle at 50% 15%,#292929 0,#090909 45%,#000 100%);
-  overflow-x:hidden;
+ background:
+ radial-gradient(circle at 50% 8%,#303030 0,#0b0b0b 43%,#000 100%);
+ overflow-x:hidden;
 }
 
 button{
-  font:inherit;
-  -webkit-tap-highlight-color:transparent;
+ font:inherit;
+ -webkit-tap-highlight-color:transparent;
 }
 
 .app{
-  width:min(1120px,100%);
-  margin:auto;
-  padding:8px 8px 30px;
+ width:min(1180px,100%);
+ margin:auto;
+ padding:7px 7px 35px;
 }
 
-/* ÜST */
+/* TOP */
 
 .top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border:1px solid #b88924;
-  border-radius:15px;
-  background:linear-gradient(145deg,#181818,#050505);
-  box-shadow:0 8px 25px #000;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ padding:9px 11px;
+ border:1px solid #c79731;
+ border-radius:15px;
+ background:
+ linear-gradient(145deg,#191919,#050505);
+ box-shadow:
+ 0 8px 25px #000,
+ inset 0 1px 0 #ffe49a22;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:8px;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.logoMark{
-  width:36px;
-  height:36px;
-  border-radius:9px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#ffe08a,#a97818);
-  color:#080808;
-  font-size:20px;
+ width:37px;
+ height:37px;
+ display:grid;
+ place-items:center;
+ border-radius:10px;
+ background:
+ linear-gradient(145deg,#ffe7a1,#a57417);
+ color:#070707;
+ font-size:20px;
+ box-shadow:
+ 0 4px 8px #000,
+ inset 1px 1px 2px #fff8;
 }
 
 h1{
-  margin:0;
-  font-size:21px;
-  letter-spacing:.5px;
+ margin:0;
+ font-size:21px;
+ letter-spacing:.8px;
 }
 
 .sub{
-  font-size:9px;
-  opacity:.65;
+ font-size:9px;
+ opacity:.62;
 }
 
-.btn{
-  border:1px solid #80601b;
-  border-radius:10px;
-  padding:8px 12px;
-  background:#111;
-  color:#fff;
-  font-weight:800;
+.topBtn{
+ border:1px solid #9d751f;
+ border-radius:10px;
+ padding:8px 12px;
+ background:linear-gradient(145deg,#ffe49a,#a77517);
+ color:#100d04;
+ font-weight:900;
 }
 
-.btn.gold{
-  background:linear-gradient(145deg,#ffe08a,#a87918);
-  color:#100d04;
-}
-
-/* BİLGİ */
+/* STATS */
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:5px;
-  margin:7px 0;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:5px;
+ margin:7px 0;
 }
 
 .stat{
-  background:linear-gradient(145deg,#151515,#050505);
-  border:1px solid #ffffff12;
-  border-radius:9px;
-  text-align:center;
-  padding:6px;
-  font-size:9px;
+ text-align:center;
+ padding:6px 3px;
+ border-radius:9px;
+ border:1px solid #ffffff10;
+ background:linear-gradient(145deg,#171717,#050505);
+ font-size:9px;
+ box-shadow:0 4px 12px #0008;
 }
 
 .stat b{
-  display:block;
-  color:var(--gold2);
-  font-size:15px;
+ display:block;
+ color:var(--gold2);
+ font-size:15px;
 }
 
-/* MASA */
+/* TABLE */
 
 .table{
-  position:relative;
-  min-height:600px;
-  padding:12px;
-  border-radius:30px;
-  background:
-    radial-gradient(circle at 50% 45%,#181818,#080808 62%,#000);
-  border:3px solid var(--gold);
-  box-shadow:
-    0 18px 45px #000,
-    inset 0 0 65px #000,
-    inset 0 1px 0 #ffe08a55;
+ position:relative;
+ min-height:650px;
+ padding:11px;
+ border:3px solid var(--gold);
+ border-radius:30px;
+ background:
+ radial-gradient(circle at 50% 45%,#202020 0,#0b0b0b 58%,#000 100%);
+ box-shadow:
+ 0 18px 45px #000,
+ inset 0 0 75px #000,
+ inset 0 1px 0 #ffe49a55;
 }
 
-.table:before{
-  content:"";
-  position:absolute;
-  inset:9px;
-  border:1px solid #d9aa3533;
-  border-radius:22px;
-  pointer-events:none;
+.table:after{
+ content:"";
+ position:absolute;
+ inset:8px;
+ border:1px solid #d7a62e35;
+ border-radius:22px;
+ pointer-events:none;
 }
 
-.tableTitle{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  color:#d9aa3518;
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:5px;
-  pointer-events:none;
+.tableLogo{
+ position:absolute;
+ left:50%;
+ top:51%;
+ transform:translate(-50%,-50%);
+ color:#d7a62e12;
+ font-weight:1000;
+ font-size:35px;
+ letter-spacing:7px;
+ pointer-events:none;
 }
 
-/* OYUNCULAR */
+/* PLAYERS */
 
-.topSeats{
-  position:relative;
-  z-index:3;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
+.topPlayers{
+ position:relative;
+ z-index:4;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:8px;
 }
 
-.seat{
-  background:linear-gradient(145deg,#191919,#050505);
-  border:1px solid #d9aa3555;
-  border-radius:12px;
-  padding:7px 9px;
-  box-shadow:0 7px 18px #000;
+.player{
+ padding:7px;
+ border-radius:12px;
+ border:1px solid #d7a62e45;
+ background:linear-gradient(145deg,#191919,#050505);
+ box-shadow:0 7px 18px #000;
+ transition:.2s;
 }
 
-.seat.active{
-  border-color:var(--gold2);
-  box-shadow:0 0 18px #d9aa3566;
+.player.active{
+ border-color:var(--gold2);
+ box-shadow:
+ 0 0 20px #d7a62e55,
+ 0 7px 18px #000;
 }
 
-.seatName{
-  color:var(--gold2);
-  font-size:12px;
-  font-weight:900;
+.playerName{
+ color:var(--gold2);
+ font-weight:900;
+ font-size:11px;
 }
 
-.seatScore{
-  font-size:9px;
-  opacity:.7;
+.playerInfo{
+ font-size:8px;
+ opacity:.55;
 }
 
 .botRack{
-  height:31px;
-  margin-top:5px;
-  border-radius:10px 10px 5px 5px;
-  background:linear-gradient(180deg,#e2b83d,#69450a);
-  border:1px solid #f7d774;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+ margin-top:5px;
+ height:28px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:9px 9px 4px 4px;
+ background:
+ linear-gradient(180deg,#edc95e,#9a6811);
+ border:1px solid #ffe59b;
+ overflow:hidden;
 }
 
-.botTiles{
-  display:flex;
-  gap:2px;
+.miniTiles{
+ display:flex;
+ gap:2px;
 }
 
 .miniTile{
-  width:15px;
-  height:22px;
-  border-radius:3px;
-  background:#080808;
-  border:1px solid #444;
+ width:14px;
+ height:20px;
+ border-radius:3px;
+ background:
+ linear-gradient(145deg,#252525,#050505);
+ border:1px solid #555;
 }
 
-/* ORTA */
+/* CENTER */
 
 .center{
-  position:relative;
-  z-index:3;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  align-items:center;
-  min-height:155px;
-  gap:8px;
+ position:relative;
+ z-index:4;
+ min-height:170px;
+ display:grid;
+ grid-template-columns:1fr 1fr 1fr;
+ align-items:center;
+ gap:5px;
 }
 
 .centerBox{
-  text-align:center;
+ text-align:center;
 }
 
 .label{
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:1px;
-  margin-bottom:5px;
-  font-weight:800;
+ color:var(--gold);
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:1px;
+ margin-bottom:5px;
 }
 
 .turn{
-  color:#ffe08a;
-  font-size:16px;
-  font-weight:900;
+ color:var(--gold2);
+ font-weight:1000;
+ font-size:17px;
+ text-shadow:0 0 10px #d7a62e55;
 }
+
+/* DECK */
 
 .deck{
-  width:48px;
-  height:67px;
-  border-radius:8px;
-  border:2px solid #c99727;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      #151515 0,
-      #151515 4px,
-      #252525 4px,
-      #252525 8px
-    );
-  color:#d9aa35;
-  font-size:20px;
-  box-shadow:4px 6px 0 #050505,0 8px 16px #000;
+ width:50px;
+ height:69px;
+ border-radius:8px;
+ border:2px solid #c3922a;
+ background:
+ repeating-linear-gradient(
+  45deg,
+  #080808 0,
+  #080808 4px,
+  #242424 4px,
+  #242424 8px
+ );
+ color:var(--gold2);
+ font-size:21px;
+ box-shadow:
+ 4px 6px 0 #020202,
+ 0 10px 18px #000;
 }
+
+.deck:active{
+ transform:translateY(3px);
+}
+
+/* DISCARD */
 
 .discard{
-  min-height:72px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+ min-height:75px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
 }
 
-/* ISTAKA */
-
-.rackArea{
-  position:relative;
-  z-index:4;
-  margin-top:4px;
-}
-
-.rack{
-  position:relative;
-  width:100%;
-  min-height:157px;
-  padding:27px 6px 7px;
-  border-radius:18px;
-  background:
-    linear-gradient(
-      180deg,
-      #f3ca55 0,
-      #b67c13 20%,
-      #684509 100%
-    );
-  border:2px solid #ffe39a;
-  box-shadow:
-    0 14px 25px #000,
-    inset 0 2px 2px #fff6,
-    inset 0 -8px 15px #0008;
-}
-
-.rack:before{
-  content:"";
-  position:absolute;
-  left:4%;
-  right:4%;
-  top:50%;
-  height:4px;
-  border-radius:4px;
-  background:#392303;
-  box-shadow:0 2px 2px #fff5;
-}
-
-.rackName{
-  position:absolute;
-  left:50%;
-  top:6px;
-  transform:translateX(-50%);
-  z-index:10;
-  padding:3px 13px;
-  border-radius:15px;
-  background:#050505;
-  border:1px solid var(--gold);
-  color:var(--gold2);
-  font-size:9px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-/*
-  TAŞ ALANI
-  8 taş üst sıra + 7 taş alt sıra
-*/
-
-.hand{
-  position:relative;
-  z-index:8;
-  display:grid;
-  grid-template-columns:repeat(8,minmax(0,1fr));
-  grid-template-rows:58px 58px;
-  grid-auto-rows:58px;
-  gap:3px;
-  align-items:center;
-  justify-items:center;
-  width:100%;
-  min-height:119px;
-  padding:0 3px;
-  overflow:visible;
-}
-
-/* TAŞ */
+/* TILE */
 
 .tile{
-  position:relative;
-  width:34px;
-  height:51px;
-  min-width:34px;
-  padding:0;
-  border-radius:6px;
-  border:1px solid #363636;
-  background:
-    linear-gradient(145deg,#292929,#050505 65%,#111);
-  color:#fff;
-  box-shadow:
-    0 3px 5px #000,
-    inset 1px 1px 1px #ffffff18,
-    inset -1px -1px 2px #000;
-  cursor:pointer;
-  user-select:none;
-  -webkit-user-select:none;
-  touch-action:none;
-  transition:
-    transform .14s,
-    box-shadow .14s,
-    border-color .14s;
+ position:relative;
+ width:34px;
+ height:51px;
+ min-width:34px;
+ padding:0;
+ border-radius:6px;
+ border:1px solid #414141;
+ background:
+ linear-gradient(145deg,#2a2a2a 0,#0a0a0a 68%,#181818 100%);
+ color:#fff;
+ box-shadow:
+ 0 4px 6px #000,
+ inset 1px 1px 1px #ffffff18,
+ inset -1px -1px 2px #000;
+ user-select:none;
+ -webkit-user-select:none;
+ touch-action:none;
+ transition:
+ transform .12s,
+ box-shadow .12s,
+ border-color .12s;
 }
 
-.tile:hover{
-  transform:translateY(-2px);
+.tile:active{
+ transform:translateY(-2px);
 }
 
 .tile.selected{
-  transform:translateY(-8px) scale(1.06);
-  border-color:#ffe08a;
-  box-shadow:
-    0 0 15px #d9aa3588,
-    0 7px 11px #000;
+ transform:translateY(-9px) scale(1.06);
+ border-color:#ffe49a;
+ box-shadow:
+ 0 0 17px #d7a62e99,
+ 0 8px 12px #000;
 }
 
-.tile.dragging{
-  opacity:.55;
-  transform:scale(1.08);
+.tile.activePlayable{
+ border-color:#55e69a;
+ box-shadow:
+ 0 0 12px #36d47777,
+ 0 4px 8px #000;
 }
 
-.tile .num{
-  position:absolute;
-  top:3px;
-  left:0;
-  right:0;
-  text-align:center;
-  font-size:20px;
-  line-height:21px;
-  font-weight:950;
-  font-family:Arial,sans-serif;
-  text-shadow:0 2px 2px #000;
+.tile .number{
+ position:absolute;
+ top:2px;
+ left:0;
+ right:0;
+ text-align:center;
+ font-family:Arial,sans-serif;
+ font-size:20px;
+ line-height:21px;
+ font-weight:1000;
 }
 
 .tile .symbol{
-  position:absolute;
-  top:27px;
-  left:0;
-  right:0;
-  text-align:center;
-  font-size:9px;
-  line-height:11px;
-  font-weight:900;
+ position:absolute;
+ top:27px;
+ left:0;
+ right:0;
+ text-align:center;
+ font-size:9px;
+ line-height:11px;
+ font-weight:900;
 }
 
-.tile.red .num,
+.tile.red .number,
 .tile.red .symbol{
-  color:var(--red);
+ color:var(--red);
 }
 
-.tile.blue .num,
+.tile.blue .number,
 .tile.blue .symbol{
-  color:var(--blue);
+ color:var(--blue);
 }
 
-.tile.green .num,
+.tile.green .number,
 .tile.green .symbol{
-  color:var(--green);
+ color:var(--green);
 }
 
-.tile.black .num,
+.tile.black .number,
 .tile.black .symbol{
-  color:#eeeeee;
+ color:#eeeeee;
 }
 
-.tile.joker .num,
+.tile.joker .number,
 .tile.joker .symbol{
-  color:var(--gold2);
+ color:var(--gold2);
 }
 
-.tile.joker .num{
-  font-size:17px;
+.tile.joker .number{
+ font-size:17px;
 }
 
-/* SERİ / ÇİFT */
+/* RACK */
+
+.rackArea{
+ position:relative;
+ z-index:5;
+ margin-top:2px;
+}
+
+.rack{
+ position:relative;
+ min-height:165px;
+ padding:27px 5px 7px;
+ border-radius:18px;
+ background:
+ linear-gradient(
+ 180deg,
+ #f1ca5d 0,
+ #bd861b 19%,
+ #754d0a 55%,
+ #4a2e05 100%
+ );
+ border:2px solid #ffe39b;
+ box-shadow:
+ 0 16px 30px #000,
+ inset 0 2px 2px #fff7,
+ inset 0 -8px 18px #0009;
+}
+
+.rack:before{
+ content:"";
+ position:absolute;
+ left:3%;
+ right:3%;
+ top:50%;
+ height:4px;
+ border-radius:4px;
+ background:#392303;
+ box-shadow:0 1px 2px #fff6;
+}
+
+.rack:after{
+ content:"";
+ position:absolute;
+ left:1.5%;
+ right:1.5%;
+ bottom:3px;
+ height:6px;
+ border-radius:0 0 12px 12px;
+ background:#2d1c03;
+}
+
+.rackName{
+ position:absolute;
+ top:5px;
+ left:50%;
+ transform:translateX(-50%);
+ z-index:15;
+ padding:3px 13px;
+ border-radius:15px;
+ background:#050505;
+ border:1px solid var(--gold);
+ color:var(--gold2);
+ font-size:8px;
+ font-weight:1000;
+ white-space:nowrap;
+ box-shadow:0 3px 8px #000;
+}
+
+/* HAND */
+
+.hand{
+ position:relative;
+ z-index:10;
+ display:grid;
+ grid-template-columns:repeat(8,minmax(0,1fr));
+ grid-template-rows:58px 58px;
+ gap:3px;
+ align-items:center;
+ justify-items:center;
+ width:100%;
+ min-height:119px;
+ padding:0 3px;
+}
+
+.dragging{
+ opacity:.45;
+}
+
+/* CONTROLS */
 
 .controls{
-  position:relative;
-  z-index:10;
-  display:flex;
-  justify-content:flex-end;
-  gap:7px;
-  margin-top:6px;
+ position:relative;
+ z-index:20;
+ display:flex;
+ justify-content:flex-end;
+ gap:6px;
+ margin-top:6px;
 }
 
 .choice{
-  min-width:78px;
-  padding:8px 13px;
-  border-radius:10px;
-  border:1px solid #8e681c;
-  background:linear-gradient(145deg,#1a1a1a,#050505);
-  color:#d9aa35;
-  font-size:11px;
-  font-weight:900;
-  box-shadow:0 5px 12px #000;
+ min-width:75px;
+ padding:8px 12px;
+ border-radius:10px;
+ border:1px solid #8c661a;
+ background:linear-gradient(145deg,#191919,#050505);
+ color:var(--gold2);
+ font-size:10px;
+ font-weight:1000;
+ box-shadow:0 5px 11px #000;
 }
 
 .choice.active{
-  background:linear-gradient(145deg,#ffe08a,#a87918);
-  color:#080808;
-  box-shadow:0 0 15px #d9aa3566;
+ background:linear-gradient(145deg,#ffe49a,#a67517);
+ color:#080808;
 }
 
-/* MESAJ */
+/* MESSAGE */
 
 .msg{
-  position:relative;
-  z-index:10;
-  margin-top:6px;
-  min-height:34px;
-  padding:7px;
-  border-radius:8px;
-  text-align:center;
-  background:#090909dd;
-  border:1px solid #ffffff12;
-  font-size:10px;
+ position:relative;
+ z-index:20;
+ margin-top:6px;
+ min-height:34px;
+ padding:7px;
+ border-radius:8px;
+ background:#070707e8;
+ border:1px solid #ffffff12;
+ text-align:center;
+ font-size:9px;
 }
 
-/* SKOR */
+/* SCORE */
 
 .score{
-  margin-top:9px;
-  padding:9px;
-  border-radius:13px;
-  background:linear-gradient(145deg,#141414,#050505);
-  border:1px solid #d9aa3533;
+ margin-top:8px;
+ padding:8px;
+ border-radius:13px;
+ border:1px solid #d7a62e35;
+ background:linear-gradient(145deg,#171717,#050505);
 }
 
 .scoreline{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  gap:4px;
-  padding:4px;
-  border-bottom:1px solid #ffffff10;
-  font-size:10px;
+ display:grid;
+ grid-template-columns:1.5fr 1fr 1fr;
+ gap:4px;
+ padding:4px;
+ border-bottom:1px solid #ffffff0d;
+ font-size:9px;
 }
 
 .scoreline b{
-  color:#ffe08a;
+ color:var(--gold2);
 }
 
-/* KURALLAR */
+/* RULES */
 
 .rules{
-  margin-top:9px;
-  padding:9px;
-  border-radius:13px;
-  background:#090909;
-  border:1px solid #ffffff10;
-  font-size:10px;
-  line-height:1.5;
+ margin-top:8px;
+ padding:9px;
+ border-radius:13px;
+ background:#070707;
+ border:1px solid #ffffff10;
+ font-size:9px;
+ line-height:1.5;
 }
 
 .log{
-  max-height:100px;
-  overflow:auto;
-  margin-top:6px;
-  background:#000;
-  border-radius:7px;
-  padding:5px;
+ max-height:100px;
+ overflow:auto;
+ margin-top:5px;
+ padding:5px;
+ border-radius:7px;
+ background:#000;
 }
 
 .log div{
-  padding:2px 0;
-  border-bottom:1px solid #ffffff09;
+ padding:2px 0;
+ border-bottom:1px solid #ffffff0b;
 }
 
-/* KAZANMA */
+/* WIN */
 
 .win{
-  position:fixed;
-  inset:0;
-  z-index:50;
-  display:none;
-  place-items:center;
-  background:#000d;
+ position:fixed;
+ inset:0;
+ z-index:100;
+ display:none;
+ place-items:center;
+ background:#000d;
 }
 
 .win.show{
-  display:grid;
+ display:grid;
 }
 
 .winBox{
-  text-align:center;
-  padding:30px;
-  border-radius:22px;
-  border:2px solid var(--gold);
-  background:linear-gradient(145deg,#222,#050505);
-  box-shadow:0 0 60px #d9aa3555;
-  animation:pop .5s ease;
+ position:relative;
+ text-align:center;
+ padding:32px 28px;
+ border-radius:23px;
+ border:2px solid var(--gold);
+ background:
+ linear-gradient(145deg,#242424,#050505);
+ box-shadow:
+ 0 0 60px #d7a62e66,
+ 0 20px 50px #000;
+ animation:winPop .5s ease;
 }
+
+.winBox:before,
+.winBox:after{
+ content:"👏";
+ position:absolute;
+ top:20px;
+ font-size:28px;
+ animation:clap 1s infinite alternate;
+}
+
+.winBox:before{left:15px}
+.winBox:after{right:15px}
 
 .winBox h2{
-  margin:0 0 8px;
-  color:#ffe08a;
-  font-size:30px;
+ margin:0 0 8px;
+ color:var(--gold2);
+ font-size:30px;
 }
 
-@keyframes pop{
-  from{
-    transform:scale(.6);
-    opacity:0;
-  }
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
+.winBox p{
+ margin:0 0 18px;
+ font-size:12px;
+}
+
+@keyframes winPop{
+ from{
+  transform:scale(.55);
+  opacity:0;
+ }
+ to{
+  transform:scale(1);
+  opacity:1;
+ }
+}
+
+@keyframes clap{
+ from{transform:rotate(-12deg) scale(.9)}
+ to{transform:rotate(12deg) scale(1.1)}
 }
 
 /* MODAL */
 
 .modal{
-  position:fixed;
-  inset:0;
-  z-index:60;
-  display:none;
-  place-items:center;
-  padding:16px;
-  background:#000c;
+ position:fixed;
+ inset:0;
+ z-index:110;
+ display:none;
+ place-items:center;
+ padding:15px;
+ background:#000d;
 }
 
 .modal.show{
-  display:grid;
+ display:grid;
 }
 
 .modalBox{
-  width:min(500px,100%);
-  background:#111;
-  border:1px solid var(--gold);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:0 20px 50px #000;
+ width:min(500px,100%);
+ max-height:85vh;
+ overflow:auto;
+ padding:18px;
+ border-radius:18px;
+ border:1px solid var(--gold);
+ background:#111;
+ box-shadow:0 20px 50px #000;
 }
 
 .modalBox h2{
-  margin-top:0;
-  color:var(--gold2);
+ margin-top:0;
+ color:var(--gold2);
 }
 
 .modalBox li{
-  margin-bottom:6px;
-  font-size:12px;
+ margin-bottom:7px;
+ font-size:11px;
 }
 
-/* TELEFON */
+/* MOBILE */
 
 @media(max-width:650px){
 
-  .app{
-    padding:6px 5px 25px;
-  }
+ .app{
+  padding:5px 4px 25px;
+ }
 
-  .top{
-    padding:8px;
-  }
+ .top{
+  padding:8px;
+ }
 
-  h1{
-    font-size:18px;
-  }
+ h1{
+  font-size:18px;
+ }
 
-  .logoMark{
-    width:32px;
-    height:32px;
-    font-size:17px;
-  }
+ .logo{
+  width:32px;
+  height:32px;
+  font-size:17px;
+ }
 
-  .table{
-    min-height:560px;
-    padding:9px;
-    border-radius:25px;
-  }
+ .table{
+  min-height:570px;
+  padding:8px;
+  border-radius:25px;
+ }
 
-  .center{
-    min-height:140px;
-    gap:3px;
-  }
+ .center{
+  min-height:145px;
+ }
 
-  .rack{
-    min-height:148px;
-    padding-left:3px;
-    padding-right:3px;
-  }
+ .rack{
+  min-height:151px;
+  padding-left:2px;
+  padding-right:2px;
+ }
 
-  .hand{
-    grid-template-columns:repeat(8,minmax(0,1fr));
-    grid-template-rows:54px 54px;
-    grid-auto-rows:54px;
-    gap:2px;
-    min-height:111px;
-  }
+ .hand{
+  grid-template-columns:repeat(8,minmax(0,1fr));
+  grid-template-rows:53px 53px;
+  min-height:109px;
+  gap:2px;
+ }
 
-  .tile{
-    width:32px;
-    min-width:32px;
-    height:49px;
-  }
+ .tile{
+  width:31px;
+  min-width:31px;
+  height:48px;
+ }
 
-  .tile .num{
-    font-size:19px;
-  }
+ .tile .number{
+  font-size:18px;
+ }
 
-  .tile .symbol{
-    top:26px;
-    font-size:8px;
-  }
+ .tile .symbol{
+  top:25px;
+  font-size:8px;
+ }
 
-  .rackName{
-    font-size:8px;
-    padding:3px 10px;
-  }
+ .rackName{
+  font-size:7px;
+  padding:3px 9px;
+ }
 
-  .choice{
-    min-width:72px;
-    padding:7px 10px;
-  }
+ .choice{
+  min-width:68px;
+  padding:7px 9px;
+ }
+
 }
 
 @media(max-width:370px){
 
-  .tile{
-    width:29px;
-    min-width:29px;
-    height:46px;
-  }
+ .tile{
+  width:28px;
+  min-width:28px;
+  height:45px;
+ }
 
-  .tile .num{
-    font-size:17px;
-  }
+ .tile .number{
+  font-size:17px;
+ }
 
-  .tile .symbol{
-    top:25px;
-    font-size:7px;
-  }
+ .tile .symbol{
+  top:24px;
+  font-size:7px;
+ }
 
-  .hand{
-    grid-template-rows:51px 51px;
-    grid-auto-rows:51px;
-  }
+ .hand{
+  grid-template-rows:50px 50px;
+  min-height:103px;
+ }
 
-  .rack{
-    min-height:141px;
-  }
+ .rack{
+  min-height:145px;
+ }
+
+}
+
+/* SAFE AREA */
+
+@supports(padding:max(0px)){
+ .app{
+  padding-bottom:max(30px,env(safe-area-inset-bottom));
+ }
 }
 </style>
 </head>
@@ -726,253 +797,291 @@ h1{
 
 <div class="app">
 
-  <div class="top">
+<div class="top">
 
-    <div class="logo">
+ <div class="brand">
 
-      <div class="logoMark">🀄</div>
+  <div class="logo">🀄</div>
 
-      <div>
-        <h1>21 OKEY</h1>
-        <div class="sub">PREMIUM MASA • OYNANABİLİR TEST</div>
-      </div>
-
-    </div>
-
-    <button class="btn gold" onclick="showRules()">
-      Kurallar
-    </button>
-
+  <div>
+   <h1>21 OKEY</h1>
+   <div class="sub">PREMIUM MASA • MANUEL OYNANIŞ</div>
   </div>
 
-  <div class="stats">
+ </div>
 
-    <div class="stat">
-      EL
-      <b id="round">1/11</b>
-    </div>
-
-    <div class="stat">
-      SÜRE
-      <b id="timer">25</b>
-    </div>
-
-    <div class="stat">
-      SERİ
-      <b id="serial">21+</b>
-    </div>
-
-    <div class="stat">
-      ÇİFT
-      <b id="pairs">5+</b>
-    </div>
-
-  </div>
-
-  <div class="table">
-
-    <div class="tableTitle">21 OKEY</div>
-
-    <div class="topSeats">
-
-      <div class="seat" id="p2">
-
-        <div class="seatName">
-          Oyuncu 2
-        </div>
-
-        <div class="seatScore">
-          Bot • Skor: 0
-        </div>
-
-        <div class="botRack">
-          <div class="botTiles" id="bot2"></div>
-        </div>
-
-      </div>
-
-      <div class="seat" id="p3">
-
-        <div class="seatName">
-          Oyuncu 3
-        </div>
-
-        <div class="seatScore">
-          Bot • Skor: 0
-        </div>
-
-        <div class="botRack">
-          <div class="botTiles" id="bot3"></div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="center">
-
-      <div class="centerBox">
-
-        <div class="label">
-          Deste
-        </div>
-
-        <button class="deck" id="deckBtn">
-          🀫
-        </button>
-
-      </div>
-
-      <div class="centerBox">
-
-        <div class="label">
-          Atılan
-        </div>
-
-        <div class="discard" id="discardPile">
-          —
-        </div>
-
-      </div>
-
-      <div class="centerBox">
-
-        <div class="label">
-          Sıra
-        </div>
-
-        <div class="turn" id="turnLabel">
-          Sen
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="seat" id="p4">
-
-      <div class="seatName">
-        Oyuncu 4
-      </div>
-
-      <div class="seatScore">
-        Bot • Skor: 0
-      </div>
-
-      <div class="botRack">
-        <div class="botTiles" id="bot4"></div>
-      </div>
-
-    </div>
-
-    <div class="rackArea">
-
-      <div class="rack">
-
-        <div class="rackName">
-          FIRAT • SENİN ISTAKAN
-        </div>
-
-        <div class="hand" id="hand"></div>
-
-      </div>
-
-      <div class="controls">
-
-        <button class="choice active" id="serialBtn">
-          SERİ
-        </button>
-
-        <button class="choice" id="pairBtn">
-          ÇİFT
-        </button>
-
-      </div>
-
-      <div class="msg" id="msg">
-        Taşlarını manuel olarak düzenleyebilirsin.
-        15 taşın tamamı ıstakada görünür.
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="score" id="score"></div>
-
-  <div class="rules">
-
-    <b>21 OKEY</b><br>
-
-    11 el • İlk oyuncu 15 taş • Diğer oyuncular 14 taş •
-    Seri 21+ • Çift 5+ • Katlamalı sistem •
-    12-13-1 geçerli • En düşük toplam skor kazanır.
-
-    <div class="log" id="log"></div>
-
-  </div>
+ <button class="topBtn" onclick="showRules()">
+  Kurallar
+ </button>
 
 </div>
+
+<div class="stats">
+
+ <div class="stat">
+  EL
+  <b id="round">1/11</b>
+ </div>
+
+ <div class="stat">
+  SÜRE
+  <b id="timer">25</b>
+ </div>
+
+ <div class="stat">
+  SERİ
+  <b id="serial">21+</b>
+ </div>
+
+ <div class="stat">
+  ÇİFT
+  <b id="pairs">5+</b>
+ </div>
+
+</div>
+
+<div class="table">
+
+ <div class="tableLogo">21 OKEY</div>
+
+ <div class="topPlayers">
+
+  <div class="player" id="p2">
+
+   <div class="playerName">
+    Oyuncu 2
+   </div>
+
+   <div class="playerInfo">
+    Bot • Skor: 0
+   </div>
+
+   <div class="botRack">
+    <div class="miniTiles" id="bot2"></div>
+   </div>
+
+  </div>
+
+  <div class="player" id="p3">
+
+   <div class="playerName">
+    Oyuncu 3
+   </div>
+
+   <div class="playerInfo">
+    Bot • Skor: 0
+   </div>
+
+   <div class="botRack">
+    <div class="miniTiles" id="bot3"></div>
+   </div>
+
+  </div>
+
+ </div>
+
+ <div class="center">
+
+  <div class="centerBox">
+
+   <div class="label">DESTE</div>
+
+   <button class="deck" id="deckBtn">
+    🀫
+   </button>
+
+  </div>
+
+  <div class="centerBox">
+
+   <div class="label">ATILAN</div>
+
+   <div class="discard" id="discardPile">
+    —
+   </div>
+
+  </div>
+
+  <div class="centerBox">
+
+   <div class="label">SIRA</div>
+
+   <div class="turn" id="turnLabel">
+    SEN
+   </div>
+
+  </div>
+
+ </div>
+
+ <div class="player" id="p4">
+
+  <div class="playerName">
+   Oyuncu 4
+  </div>
+
+  <div class="playerInfo">
+   Bot • Skor: 0
+  </div>
+
+  <div class="botRack">
+   <div class="miniTiles" id="bot4"></div>
+  </div>
+
+ </div>
+
+ <div class="rackArea">
+
+  <div class="rack">
+
+   <div class="rackName">
+    FIRAT • SENİN ISTAKAN
+   </div>
+
+   <div class="hand" id="hand"></div>
+
+  </div>
+
+  <div class="controls">
+
+   <button
+    class="choice active"
+    id="serialBtn">
+    SERİ
+   </button>
+
+   <button
+    class="choice"
+    id="pairBtn">
+    ÇİFT
+   </button>
+
+  </div>
+
+  <div class="msg" id="msg">
+   Taşlarını parmağınla sürükleyerek manuel olarak
+   istediğin sıraya koyabilirsin.
+  </div>
+
+ </div>
+
+</div>
+
+<div class="score" id="score"></div>
+
+<div class="rules">
+
+ <b>21 OKEY PREMIUM TEST</b><br>
+
+ Manuel taş dizme • 11 el • 25 saniye •
+ Seri 21+ • Çift 5+ • Katlamalı sistem •
+ 12-13-1 geçerli • En düşük toplam skor kazanır.
+
+ <div class="log" id="log"></div>
+
+</div>
+
+</div>
+
+<!-- KAZANMA -->
 
 <div class="win" id="win">
 
-  <div class="winBox">
+ <div class="winBox">
 
-    <h2>🏆 KAZANDIN!</h2>
+  <h2>🏆 KAZANDIN!</h2>
 
-    <div>
-      21 Okey masasında el senin!
-    </div>
+  <p>
+   21 Okey masasının kazananı sensin!
+  </p>
 
-    <br>
+  <button
+   class="topBtn"
+   onclick="hideWin()">
+   DEVAM
+  </button>
 
-    <button class="btn gold" onclick="hideWin()">
-      Devam
-    </button>
-
-  </div>
+ </div>
 
 </div>
 
+<!-- KURALLAR -->
+
 <div class="modal" id="modal">
 
-  <div class="modalBox">
+ <div class="modalBox">
 
-    <h2>21 Okey Kuralları</h2>
+  <h2>21 Okey</h2>
 
-    <ul>
+  <ul>
 
-      <li>İlk oyuncu 15 taşla başlar.</li>
+   <li>
+    İlk oyuncu 15 taşla başlar.
+   </li>
 
-      <li>Diğer oyuncular 14 taşla başlar.</li>
+   <li>
+    Diğer oyuncular 14 taşla başlar.
+   </li>
 
-      <li>Seri açılışı minimum 21 değerindedir.</li>
+   <li>
+    Seri açılışı minimum 21 değerindedir.
+   </li>
 
-      <li>Çift açılışı minimum 5 çifttir.</li>
+   <li>
+    Çift açılışı minimum 5 çifttir.
+   </li>
 
-      <li>Açılışlar katlamalıdır.</li>
+   <li>
+    Açılışlar katlamalıdır.
+   </li>
 
-      <li>12-13-1 serisi geçerlidir.</li>
+   <li>
+    12-13-1 serisi geçerlidir.
+   </li>
 
-      <li>11 el sonunda en düşük toplam skor kazanır.</li>
+   <li>
+    Oyuncular taşlarını manuel olarak düzenler.
+   </li>
 
-    </ul>
+   <li>
+    Otomatik dizme ve otomatik per yapma yoktur.
+   </li>
 
-    <button class="btn gold" onclick="hideRules()">
-      Kapat
-    </button>
+   <li>
+    İşlek taşlar yeşil ışıklı çerçeve ile belirtilir.
+   </li>
 
-  </div>
+   <li>
+    El bitiminde kazanan oyuncuya -100 yazılır.
+   </li>
+
+   <li>
+    11 el sonunda en düşük toplam skor kazanır.
+   </li>
+
+  </ul>
+
+  <button
+   class="topBtn"
+   onclick="hideRules()">
+   KAPAT
+  </button>
+
+ </div>
 
 </div>
 
 <script>
 
+/* =========================
+   21 OKEY PREMIUM ENGINE
+========================= */
+
 const COLORS=[
-  ["red","♥"],
-  ["blue","♦"],
-  ["black","♣"],
-  ["green","♠"]
+ ["red","♥"],
+ ["blue","♦"],
+ ["black","♣"],
+ ["green","♠"]
 ];
 
 let deck=[];
@@ -991,438 +1100,485 @@ let pairLimit=5;
 let timer=25;
 let timerId=null;
 
+let audioContext=null;
+
 const $=id=>document.getElementById(id);
+
+/* DESTE */
 
 function shuffle(a){
 
-  for(let i=a.length-1;i>0;i--){
+ for(let i=a.length-1;i>0;i--){
 
-    const j=Math.floor(Math.random()*(i+1));
+  const j=Math.floor(Math.random()*(i+1));
 
-    [a[i],a[j]]=[a[j],a[i]];
+  [a[i],a[j]]=[a[j],a[i]];
 
-  }
+ }
 
-  return a;
+ return a;
 }
 
 function makeDeck(){
 
-  deck=[];
+ deck=[];
 
-  for(const [c,s] of COLORS){
+ for(const [c,s] of COLORS){
 
-    for(let n=1;n<=13;n++){
+  for(let n=1;n<=13;n++){
 
-      for(let k=0;k<2;k++){
-
-        deck.push({
-          n:n,
-          c:c,
-          s:s,
-          joker:false,
-          id:Math.random()
-        });
-
-      }
-
-    }
-
-  }
-
-  for(let k=0;k<2;k++){
+   for(let k=0;k<2;k++){
 
     deck.push({
-      n:0,
-      c:"joker",
-      s:"★",
-      joker:true,
-      id:Math.random()
+     n,
+     c,
+     s,
+     joker:false,
+     id:Math.random()
     });
+
+   }
 
   }
 
-  shuffle(deck);
+ }
+
+ for(let k=0;k<2;k++){
+
+  deck.push({
+   n:0,
+   c:"joker",
+   s:"★",
+   joker:true,
+   id:Math.random()
+  });
+
+ }
+
+ shuffle(deck);
+
 }
 
 function take(){
 
-  return deck.pop();
+ return deck.pop();
 
 }
+
+/* LOG */
+
+function log(message){
+
+ const d=document.createElement("div");
+
+ d.textContent=message;
+
+ $("log").prepend(d);
+
+}
+
+function say(message){
+
+ $("msg").textContent=message;
+
+}
+
+/* TILE */
 
 function tileHTML(t){
 
-  if(!t)return "—";
+ if(!t)return "—";
 
-  return `
-    <button class="tile ${t.c}" disabled>
-      <span class="num">${t.joker?"★":t.n}</span>
-      <span class="symbol">${t.joker?"JOKER":t.s}</span>
-    </button>
-  `;
+ return `
+ <button class="tile ${t.c}" disabled>
+  <span class="number">
+   ${t.joker?"★":t.n}
+  </span>
+  <span class="symbol">
+   ${t.joker?"JOKER":t.s}
+  </span>
+ </button>
+ `;
 
 }
+
+/* RENDER */
 
 function render(){
 
-  $("round").textContent=round+"/11";
+ $("round").textContent=
+  round+"/11";
 
-  $("timer").textContent=timer;
+ $("timer").textContent=
+  timer;
 
-  $("serial").textContent=serialLimit+"+";
+ $("serial").textContent=
+  serialLimit+"+";
 
-  $("pairs").textContent=pairLimit+"+";
+ $("pairs").textContent=
+  pairLimit+"+";
 
-  $("turnLabel").textContent=
-    turn===0 ? "Sen" : "Bot "+(turn+1);
+ $("turnLabel").textContent=
+  turn===0?"SEN":"BOT "+(turn+1);
 
-  $("discardPile").innerHTML=
-    discard ? tileHTML(discard) : "—";
+ $("discardPile").innerHTML=
+  discard?tileHTML(discard):"—";
 
-  const hand=$("hand");
+ const hand=$("hand");
 
-  hand.innerHTML="";
+ hand.innerHTML="";
 
-  hands[0].forEach((t,i)=>{
+ hands[0].forEach((t,i)=>{
 
-    const b=document.createElement("button");
+  const b=document.createElement("button");
 
-    b.className=
-      "tile "+t.c+
-      (selected===i ? " selected" : "");
+  b.className=
+   "tile "+t.c+
+   (selected===i?" selected":"");
 
-    b.dataset.index=i;
+  if(isPlayableTile(t)){
+   b.classList.add("activePlayable");
+  }
 
-    b.draggable=true;
+  b.dataset.index=i;
 
-    b.innerHTML=`
-      <span class="num">
-        ${t.joker?"★":t.n}
-      </span>
-      <span class="symbol">
-        ${t.joker?"JOKER":t.s}
-      </span>
-    `;
+  b.innerHTML=`
+   <span class="number">
+    ${t.joker?"★":t.n}
+   </span>
+   <span class="symbol">
+    ${t.joker?"JOKER":t.s}
+   </span>
+  `;
 
-    b.addEventListener("click",e=>{
+  /* DOKUN */
 
-      if(turn!==0)return;
+  b.addEventListener("click",()=>{
 
-      if(dragMoved){
-        dragMoved=false;
-        return;
-      }
+   if(turn!==0)return;
 
-      selected=
-        selected===i ? null : i;
+   selected=
+    selected===i?null:i;
 
-      render();
-
-    });
-
-    b.addEventListener("dragstart",e=>{
-
-      dragIndex=i;
-
-      b.classList.add("dragging");
-
-      e.dataTransfer.effectAllowed="move";
-
-    });
-
-    b.addEventListener("dragend",()=>{
-
-      b.classList.remove("dragging");
-
-      dragIndex=null;
-
-    });
-
-    b.addEventListener("dragover",e=>{
-
-      e.preventDefault();
-
-    });
-
-    b.addEventListener("drop",e=>{
-
-      e.preventDefault();
-
-      if(dragIndex===null)return;
-
-      moveTile(dragIndex,i);
-
-      dragIndex=null;
-
-    });
-
-    hand.appendChild(b);
+   render();
 
   });
 
-  for(let i=1;i<4;i++){
+  /* SÜRÜKLE */
 
-    const seat=$("p"+(i+1));
+  b.draggable=true;
 
-    seat.classList.toggle(
-      "active",
-      turn===i
+  b.addEventListener(
+   "dragstart",
+   e=>{
+
+    dragIndex=i;
+
+    b.classList.add("dragging");
+
+    e.dataTransfer.effectAllowed="move";
+
+   }
+  );
+
+  b.addEventListener(
+   "dragend",
+   ()=>{
+
+    b.classList.remove("dragging");
+
+   }
+  );
+
+  b.addEventListener(
+   "dragover",
+   e=>{
+
+    e.preventDefault();
+
+   }
+  );
+
+  b.addEventListener(
+   "drop",
+   e=>{
+
+    e.preventDefault();
+
+    if(dragIndex===null)return;
+
+    moveTile(
+     dragIndex,
+     i
     );
 
-    seat.querySelector(".seatScore").textContent=
-      "Bot • Skor: "+scores[i];
+    dragIndex=null;
 
-    const bt=$("bot"+(i+1));
+   }
+  );
 
-    if(bt){
+  hand.appendChild(b);
 
-      bt.innerHTML="";
+ });
 
-      hands[i].forEach(()=>{
+ /* BOTLAR */
 
-        const d=document.createElement("div");
+ for(let i=1;i<4;i++){
 
-        d.className="miniTile";
+  const p=$("p"+(i+1));
 
-        bt.appendChild(d);
+  p.classList.toggle(
+   "active",
+   turn===i
+  );
 
-      });
+  p.querySelector(
+   ".playerInfo"
+  ).textContent=
+   "Bot • Skor: "+scores[i];
 
-    }
+  const mini=$("bot"+(i+1));
 
-  }
+  mini.innerHTML="";
 
-  $("score").innerHTML=`
+  hands[i].forEach(()=>{
 
-    <div class="scoreline">
+   const t=document.createElement("div");
 
-      <b>Oyuncu</b>
-      <b>Skor</b>
-      <b>Durum</b>
+   t.className="miniTile";
 
-    </div>
+   mini.appendChild(t);
 
-    ${scores.map((s,i)=>`
+  });
 
-      <div class="scoreline">
+ }
 
-        <span>
-          ${i===0?"Fırat":"Oyuncu "+(i+1)}
-        </span>
+ /* SKOR */
 
-        <b>${s}</b>
+ $("score").innerHTML=`
 
-        <span>
-          ${i===0?"Sen":"Bot"}
-        </span>
+ <div class="scoreline">
 
-      </div>
+  <b>Oyuncu</b>
+  <b>Skor</b>
+  <b>Durum</b>
 
-    `).join("")}
+ </div>
 
-  `;
+ ${scores.map((s,i)=>`
 
-}
+ <div class="scoreline">
 
-function log(s){
+  <span>
+   ${i===0?"Fırat":"Oyuncu "+(i+1)}
+  </span>
 
-  const d=document.createElement("div");
+  <b>${s}</b>
 
-  d.textContent=s;
+  <span>
+   ${i===0?"Sen":"Bot"}
+  </span>
 
-  $("log").prepend(d);
+ </div>
 
-}
+ `).join("")}
 
-function say(s){
-
-  $("msg").textContent=s;
-
-}
-
-function stopTimer(){
-
-  clearInterval(timerId);
-
-  timerId=null;
-
-}
-
-function startTimer(){
-
-  stopTimer();
-
-  timer=25;
-
-  render();
-
-  timerId=setInterval(()=>{
-
-    timer--;
-
-    render();
-
-    if(timer<=0){
-
-      stopTimer();
-
-      say("25 saniye doldu.");
-
-    }
-
-  },1000);
+ `;
 
 }
 
 /* TAŞ SÜRÜKLEME */
 
 let dragIndex=null;
-let dragMoved=false;
 
 function moveTile(from,to){
 
-  if(from===to)return;
+ if(from===to)return;
 
-  const arr=hands[0];
+ const arr=hands[0];
 
-  const moved=arr.splice(from,1)[0];
+ const moved=
+  arr.splice(from,1)[0];
 
-  arr.splice(to,0,moved);
+ arr.splice(to,0,moved);
 
-  selected=null;
+ selected=null;
 
-  dragMoved=true;
+ say(
+  "Taşı manuel olarak yerleştirdin."
+ );
 
-  say("Taşını manuel olarak yerleştirdin.");
-
-  render();
+ render();
 
 }
 
-/* DOKUNMATİK SÜRÜKLEME */
+/* İŞLEK TAŞ */
 
-let touchData=null;
+function isPlayableTile(t){
 
-$("hand").addEventListener("touchstart",e=>{
+ if(!t)return false;
 
-  const tile=e.target.closest(".tile");
+ /*
+  Basit görsel gösterim:
+  Atılan taş kendi açık serilerinden
+  birine eklenebiliyorsa işlek kabul edilir.
+ */
 
-  if(!tile)return;
+ return false;
 
-  touchData={
-
-    index:Number(tile.dataset.index),
-
-    x:e.touches[0].clientX,
-
-    y:e.touches[0].clientY,
-
-    moved:false
-
-  };
-
-},{passive:true});
-
-$("hand").addEventListener("touchmove",e=>{
-
-  if(!touchData)return;
-
-  const x=e.touches[0].clientX;
-
-  const y=e.touches[0].clientY;
-
-  if(
-    Math.abs(x-touchData.x)>8 ||
-    Math.abs(y-touchData.y)>8
-  ){
-
-    touchData.moved=true;
-
-  }
-
-},{passive:true});
-
-$("hand").addEventListener("touchend",e=>{
-
-  if(!touchData)return;
-
-  if(!touchData.moved){
-
-    touchData=null;
-
-    return;
-
-  }
-
-  const x=e.changedTouches[0].clientX;
-
-  const elements=[...$("hand").children];
-
-  let closest=0;
-
-  let distance=Infinity;
-
-  elements.forEach((el,i)=>{
-
-    const r=el.getBoundingClientRect();
-
-    const cx=r.left+r.width/2;
-
-    const cy=r.top+r.height/2;
-
-    const d=
-      Math.abs(x-cx)+
-      Math.abs(
-        e.changedTouches[0].clientY-cy
-      );
-
-    if(d<distance){
-
-      distance=d;
-
-      closest=i;
-
-    }
-
-  });
-
-  moveTile(
-    touchData.index,
-    closest
-  );
-
-  touchData=null;
-
-},{passive:true});
+}
 
 /* SERİ */
 
-$("serialBtn").onclick=()=>{
+function runInfo(arr){
 
-  $("serialBtn").classList.add("active");
+ const normal=
+  arr
+   .filter(t=>!t.joker)
+   .slice()
+   .sort((a,b)=>a.n-b.n);
 
-  $("pairBtn").classList.remove("active");
+ if(normal.length<3)return null;
 
-  say(
-    "Seri açılışı seçildi. Minimum "+
-    serialLimit+"."
-  );
+ const nums=
+  normal.map(t=>t.n);
 
-};
+ const unique=
+  [...new Set(nums)];
+
+ if(unique.length!==nums.length)return null;
+
+ /* 12-13-1 */
+
+ if(
+  nums.includes(1)&&
+  nums.includes(12)&&
+  nums.includes(13)
+ ){
+
+  return {
+   valid:true,
+   score:13
+  };
+
+ }
+
+ for(let i=1;i<nums.length;i++){
+
+  if(nums[i]!==nums[i-1]+1){
+
+   return null;
+
+  }
+
+ }
+
+ const middle=
+  normal[
+   Math.floor(normal.length/2)
+  ];
+
+ return {
+  valid:true,
+  score:middle.n
+ };
+
+}
 
 /* ÇİFT */
 
-$("pairBtn").onclick=()=>{
+function pairInfo(arr){
 
-  $("pairBtn").classList.add("active");
+ if(
+  arr.length<2||
+  arr.length%2!==0
+ )return null;
 
-  $("serialBtn").classList.remove("active");
+ const normal=
+  arr.filter(t=>!t.joker);
+
+ if(normal.length!==arr.length)
+  return null;
+
+ const map={};
+
+ normal.forEach(t=>{
+
+  const key=t.n;
+
+  map[key]=
+   (map[key]||0)+1;
+
+ });
+
+ const values=
+  Object.values(map);
+
+ if(
+  values.length*2!==arr.length
+ )return null;
+
+ if(
+  values.some(v=>v!==2)
+ )return null;
+
+ return {
+  valid:true,
+  pairs:arr.length/2
+ };
+
+}
+
+/* AÇILIŞ KONTROL */
+
+function selectedOpen(){
+
+ if(
+  turn!==0||
+  selected===null
+ ){
 
   say(
-    "Çift açılışı seçildi. Minimum "+
-    pairLimit+" çift."
+   "Önce açmak istediğin taşı seç."
   );
+
+  return;
+
+ }
+
+ say(
+  "Seri veya çift açılışı için taşları seçebilmek için sonraki sürümde çoklu seçim sistemi eklenecek."
+ );
+
+}
+
+/* SERİ / ÇİFT BUTON */
+
+$("serialBtn").onclick=()=>{
+
+ $("serialBtn")
+  .classList.add("active");
+
+ $("pairBtn")
+  .classList.remove("active");
+
+ say(
+  "SERİ seçildi • Minimum "+serialLimit
+ );
+
+};
+
+$("pairBtn").onclick=()=>{
+
+ $("pairBtn")
+  .classList.add("active");
+
+ $("serialBtn")
+  .classList.remove("active");
+
+ say(
+  "ÇİFT seçildi • Minimum "+pairLimit+" çift"
+ );
 
 };
 
@@ -1430,117 +1586,241 @@ $("pairBtn").onclick=()=>{
 
 $("deckBtn").onclick=()=>{
 
-  if(turn!==0){
+ if(turn!==0){
 
-    say("Şu anda sıra sende değil.");
+  say(
+   "Şu anda sıra sende değil."
+  );
 
-    return;
+  return;
+
+ }
+
+ if(deck.length===0){
+
+  say("Deste bitti.");
+
+  return;
+
+ }
+
+ const t=take();
+
+ hands[0].push(t);
+
+ selected=null;
+
+ say(
+  "Taşı aldın. Istakanda istediğin yere sürükleyebilirsin."
+ );
+
+ render();
+
+};
+
+/* ATILAN TAŞ */
+
+$("discardPile").addEventListener(
+ "click",
+ ()=>{
+
+  if(turn!==0)return;
+
+  if(!discard){
+
+   say(
+    "Atılan taş yok."
+   );
+
+   return;
 
   }
 
-  if(deck.length===0){
+  hands[0].push(discard);
 
-    say("Deste bitti.");
-
-    return;
-
-  }
-
-  const t=take();
-
-  hands[0].push(t);
+  discard=null;
 
   selected=null;
 
   say(
-    "Taşı aldın. Şimdi ıstakanda manuel düzenleyebilirsin."
+   "Atılan taşı ıstakana aldın."
   );
 
   render();
 
-};
+ }
+);
 
-/* ATILAN */
+/* ZAMAN */
 
-$("discardPile").addEventListener(
-  "click",
-  ()=>{
+function stopTimer(){
 
-    if(turn!==0)return;
+ clearInterval(timerId);
 
-    if(!discard){
+ timerId=null;
 
-      say("Atılan taş yok.");
+}
 
-      return;
+function startTimer(){
 
-    }
+ stopTimer();
 
-    hands[0].push(discard);
+ timer=25;
 
-    discard=null;
+ render();
 
-    selected=null;
+ timerId=setInterval(()=>{
 
-    say("Atılan taşı ıstakana aldın.");
+  timer--;
 
-    render();
+  render();
+
+  if(timer<=0){
+
+   stopTimer();
+
+   say(
+    "Süren doldu."
+   );
 
   }
-);
+
+ },1000);
+
+}
 
 /* BOT */
 
 function botTurn(){
 
-  if(turn===0)return;
+ if(turn===0)return;
 
-  if(hands[turn].length<14){
+ if(hands[turn].length<14){
 
-    const t=take();
+  const t=take();
 
-    if(t)hands[turn].push(t);
+  if(t){
 
-  }
-
-  if(hands[turn].length){
-
-    const index=Math.floor(
-      Math.random()*hands[turn].length
-    );
-
-    discard=
-      hands[turn].splice(index,1)[0];
+   hands[turn].push(t);
 
   }
 
-  log(
-    "Bot "+(turn+1)+" taş oynadı."
+ }
+
+ if(hands[turn].length){
+
+  const index=
+   Math.floor(
+    Math.random()*
+    hands[turn].length
+   );
+
+  discard=
+   hands[turn].splice(index,1)[0];
+
+ }
+
+ log(
+  "Bot "+(turn+1)+" taş attı."
+ );
+
+ if(
+  hands[turn].length===0
+ ){
+
+  finish(turn);
+
+  return;
+
+ }
+
+ turn=
+  (turn+1)%4;
+
+ render();
+
+ if(turn===0){
+
+  say(
+   "Sıra sende."
   );
 
-  if(hands[turn].length===0){
+  startTimer();
 
-    finish(turn);
+ }else{
 
-    return;
+  setTimeout(
+   botTurn,
+   650
+  );
+
+ }
+
+}
+
+/* ALKIŞ */
+
+function applause(){
+
+ try{
+
+  if(!audioContext){
+
+   audioContext=
+    new(
+     window.AudioContext||
+     window.webkitAudioContext
+    )();
 
   }
 
-  turn=(turn+1)%4;
+  const now=
+   audioContext.currentTime;
 
-  render();
+  for(let i=0;i<12;i++){
 
-  if(turn===0){
+   const osc=
+    audioContext.createOscillator();
 
-    say("Sıra sende.");
+   const gain=
+    audioContext.createGain();
 
-    startTimer();
+   osc.frequency.value=
+    700+
+    Math.random()*500;
 
-  }else{
+   gain.gain.setValueAtTime(
+    .0001,
+    now+i*.09
+   );
 
-    setTimeout(botTurn,650);
+   gain.gain.exponentialRampToValueAtTime(
+    .06,
+    now+i*.09+.02
+   );
+
+   gain.gain.exponentialRampToValueAtTime(
+    .0001,
+    now+i*.09+.07
+   );
+
+   osc.connect(gain);
+
+   gain.connect(
+    audioContext.destination
+   );
+
+   osc.start(
+    now+i*.09
+   );
+
+   osc.stop(
+    now+i*.09+.08
+   );
 
   }
+
+ }catch(e){}
 
 }
 
@@ -1548,31 +1828,41 @@ function botTurn(){
 
 function finish(winner){
 
-  stopTimer();
+ stopTimer();
 
-  scores[winner]-=100;
+ scores[winner]-=100;
 
-  if(winner===0){
+ if(winner===0){
 
-    $("win").classList.add("show");
+  applause();
 
-    say("🏆 Eli sen kazandın!");
+  $("win")
+   .classList.add("show");
 
-  }else{
+  say(
+   "🏆 Eli sen kazandın!"
+  );
 
-    say(
-      "Bot "+(winner+1)+" eli kazandı."
-    );
+  log(
+   "👏 Fırat eli kazandı!"
+  );
 
-  }
+ }else{
 
-  render();
+  say(
+   "Bot "+(winner+1)+" eli kazandı."
+  );
+
+ }
+
+ render();
 
 }
 
 function hideWin(){
 
-  $("win").classList.remove("show");
+ $("win")
+  .classList.remove("show");
 
 }
 
@@ -1580,60 +1870,77 @@ function hideWin(){
 
 function showRules(){
 
-  $("modal").classList.add("show");
+ $("modal")
+  .classList.add("show");
 
 }
 
 function hideRules(){
 
-  $("modal").classList.remove("show");
+ $("modal")
+  .classList.remove("show");
 
 }
 
-/* BAŞLANGIÇ */
+/* BAŞLAT */
 
 function start(){
 
-  makeDeck();
+ makeDeck();
 
-  hands=[[],[],[],[]];
+ hands=[
+  [],
+  [],
+  [],
+  []
+ ];
 
-  scores=[0,0,0,0];
+ scores=[
+  0,
+  0,
+  0,
+  0
+ ];
 
-  round=1;
+ round=1;
+ turn=0;
 
-  turn=0;
+ serialLimit=21;
+ pairLimit=5;
 
-  serialLimit=21;
+ discard=null;
+ selected=null;
 
-  pairLimit=5;
+ for(let i=0;i<4;i++){
 
-  discard=null;
+  const count=
+   i===0?15:14;
 
-  selected=null;
+  for(
+   let k=0;
+   k<count;
+   k++
+  ){
 
-  for(let i=0;i<4;i++){
-
-    const count=
-      i===0 ? 15 : 14;
-
-    for(let k=0;k<count;k++){
-
-      hands[i].push(take());
-
-    }
+   hands[i].push(
+    take()
+   );
 
   }
 
-  log("21 Okey başladı.");
+ }
 
-  say(
-    "15 taşla başladın. Taşların tamamı ıstakada görünüyor."
-  );
+ log(
+  "21 Okey Premium başladı."
+ );
 
-  render();
+ say(
+  "15 taşın tamamı ıstakada. Taşları manuel olarak düzenleyebilirsin."
+ );
 
-  startTimer();
+ render();
+
+ startTimer();
 
 }
 
@@ -1642,14 +1949,11 @@ start();
 </script>
 
 <script>
-
 if("serviceWorker" in navigator){
-
-  navigator.serviceWorker.register("./sw.js")
-    .catch(()=>{});
-
+ navigator.serviceWorker
+  .register("./sw.js")
+  .catch(()=>{});
 }
-
 </script>
 
 </body>
